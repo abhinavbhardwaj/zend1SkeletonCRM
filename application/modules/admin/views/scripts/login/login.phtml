@@ -1,0 +1,70 @@
+<?php
+/**
+ *
+ *This page is created for login
+ *@author Abhinav Bhardwaj
+ *@since: March 23, 2016
+ */
+?>
+<!-- BEGIN LOGO -->
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div id="login">
+	<!-- BEGIN LOGIN FORM -->
+	
+            <div class="col-md-4 col-md-offset-4">
+				
+                <div class="login-panel panel panel-default">
+				 
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+						
+							<form id="loginform" role="form" class="form-vertical no-padding no-margin"	action="" onSubmit="return validateLogin();" method="post">
+								
+<!-- Displaying error messages---->
+        <?php if(isset($this->errorMsg) && $this->errorMsg !=''){?>
+<div class="alert alert-error" id="errorblock" style="display: block;">
+<?php echo $this->errorMsg;?> <a class="close" data-dismiss="alert"
+				onClick="closeThisError('errorblock');">×</a>
+		</div>
+<?php }?> <?php if(isset($this->message) && $this->message !=''){?>
+<div
+			class="alert <?php if(isset($this->success) && $this->success !=''){ echo "alert-success";}else{echo "alert-error";}?>"
+			id="successblock" style="display: block;"><?php echo $this->message;?>
+<a class="close" data-dismiss="alert"
+				onClick="closeThisError('successblock');"
+				<?php if(isset($this->success) && $this->success !=''){ echo "style='right:-30px;top:-26px;'";}?>>×</a>
+		</div>
+<?php }?>
+<!-- Error messages ends -->
+                            <fieldset>
+                                <div class="form-group">
+									<span class="add-on"><i class="icon-user"></i></span>
+                                    <input class="form-control" id="username" name="username" type="text" placeholder="Username"  autofocus>
+									<div class="errorMgsBox" id="username_error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="password" id="password" type="password" placeholder="Password" />
+								<div class="errorMgsBox" id="passwordError"></div>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <a href="<?php echo $this->url(array('controller'=>'login','action'=>'forgotpassword', 'module' => 'admin'), null, true);?>" class="" id="forget-password">Forgot your password?</a>
+                                    </label>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+								<input type="submit" id="login-btn" class="btn btn-lg btn-success btn-block"
+			value="Login" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+	<!-- END LOGIN FORM -->
+</div>
+<!-- END LOGIN -->
+<!-- BEGIN COPYRIGHT -->
+
+<!-- END COPYRIGHT -->

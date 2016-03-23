@@ -1,0 +1,80 @@
+<?php
+$editData = $this->editData;
+$adminInfoSession = new Zend_Session_Namespace('adminInfo');
+if (!empty($editData) || $editData != null) {
+    $id = $editData->id;
+    $question_count = $editData->question_count;
+    $duration = $editData->duration;
+}
+if (!empty($adminInfoSession->lcquestionData) && $adminInfoSession->lcquestionData != null) {
+    $data = $adminInfoSession->lcquestionData;
+    unset($adminInfoSession->lcquestionData);
+    $id = $data['id'];
+    $question_count = $data['question_count'];
+    $duration = $data['duration'];
+}
+?>
+<div id="body">
+    <div class="container-fluid">
+        <?php if (isset($this->success) && $this->success != '') : ?>
+            <div id="success" class="alert alert-success"><button class="close" data-dismiss="alert">×</button><?php echo $this->success; ?></div>
+        <?php endif; ?>
+        <?php if (isset($this->error) && $this->error != '') : ?>
+            <div id="exception" class="alert alert-error"><button class="close" data-dismiss="alert">×</button><?php echo $this->error; ?></div>
+        <?php endif; ?>
+
+        <div class="row-fluid">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'dashboard', 'module' => 'admin'), null, true); ?>">Home</a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->url(array('controller' => 'lcquestion', 'action' => 'index', 'module' => 'admin'), null, true); ?>">Question Count</a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="#"><?php echo (!empty($editData) && $editData != null) ? "Edit" : "Add"; ?> Question Count</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="page">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget">
+                        <div class="widget-body form">
+                            <form name="cms" id="cms" action="" method="post" class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label Grey" for="input3"><span class="error">*</span>Question Count:</label>
+                                    <div class="controls">
+                                        <input type="text" class="span2 popovers" id="question_count" name="question_count" maxlength="2" value="<?php echo $question_count; ?>" />
+                                        <div style="color:#FF0000;display:none" id="question_count_error"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label Grey" for="input3"><span class="error">*</span>Duration:<br><i style="font-weight: normal;font-size: 12px;">(In Minutes)</i></label>
+                                    <div class="controls">
+                                        <input type="text" class="span2 popovers" id="duration" name="duration" maxlength="3" value="<?php echo $duration; ?>" />
+                                        <div style="color:#FF0000;display:none" id="durationErrror"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary" onclick="return validateLcQuestionCount();"><?php echo (!empty($id)) ? 'Update' : 'Add'; ?></button>
+                                    <button type="button" class="btn" onClick="returnPage('lcquestion', 'index');">Cancel</button>
+                                </div>
+                                <input type="hidden"  name="id" id="id"  value="<?php echo (!empty($id)) ? $id : ''; ?>" />
+                                <input type="hidden"  name="type" id="type"  value="<?php echo (!empty($editData) && $editData != null) ? "Edit" : "Add"; ?>" />
+                            </form>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

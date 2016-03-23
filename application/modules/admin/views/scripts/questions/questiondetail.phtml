@@ -1,0 +1,253 @@
+<?php 
+require_once APPLICATION_PATH . '/../library/function_image_array.php';
+?>
+<?php 
+        $serverUrl = new Zend_View_Helper_ServerUrl();
+        $baseUrl = new Zend_View_Helper_BaseUrl();
+        
+	$id						= $this->edit_id;
+	$question 				= $this->question['question'];
+	$questionImage			= $this->question['question_equation_image_name'];
+	$difficulty_level		= $this->question['difficulty_level'];
+	$category_code			= $this->question['category_code'];
+	$grade_id				= $this->question['grade_id'];
+	$grade					= $this->question['grade_name'];
+	$category_id			= $this->question['category_id'];
+	$url_of_question		= $this->question['url_of_question'];
+	$question_image_url		= $this->question['question_image_url'];
+	$answer_image_url		= $this->question['answer_image_url'];
+//	$explanation			= $this->question['explanation'];
+//	$explanationImage		= $this->question['explanation_equation_image_name'];
+//	$explanationEquation	= $this->question['explanation_equation'];
+//        
+        $explanation			= $this->question['answer_explanation'];
+	$explanationImage		= $this->question['answer_explanation_image_name'];
+	$explanationEquation	= $this->question['answer_explanation_equation'];
+        
+        
+	$set_question			= $this->question['set_question'];
+	$refer_book_name		= $this->question['refer_book_name'];
+	$refer_book_chapter		= $this->question['refer_book_chapter'];
+	$refer_article_url		= $this->question['refer_article_url'];
+	$wolframalphaquery		= $this->question['wolframalphaquery'];
+	$questionImages			= $this->question['question_equation_images'];
+	$questionDisplay		= $this->question['question_display'];
+	$i=1;
+	foreach ($this->options as $options)
+	{
+		if($options->answer == 'N')
+		{
+			if(!empty($options->option_equation_image_name) && $options->option_equation_image_name != null) {
+				/*if(!empty($options->option) && $options->option != null) {
+					$wrongoption[$i]	= $options->option.'<br><img src="'.HOST_NAME.'images/equation_image/'.$options->option_equation_image_name.'" >';
+				} else {
+					$wrongoption[$i]	= '<img src="'.HOST_NAME.'images/equation_image/'.$options->option_equation_image_name.'" >';
+				}*/
+				$wrongoption[$i] 	= My_Functions::generateImages($options->option_equation_image_name, $options->option_equation);
+			} else {
+				$wrongoption[$i]	= $options->option;
+			}
+			$i++;
+		}
+		else 
+		{
+			if(!empty($options->option_equation_image_name) && $options->option_equation_image_name != null) {
+				/*if(!empty($options->option) && $options->option != null) {
+					$rightOption	= $options->option.'<br><img src="'.HOST_NAME.'images/equation_image/'.$options->option_equation_image_name.'" >';
+				} else {
+					$rightOption	= '<img src="'.HOST_NAME.'images/equation_image/'.$options->option_equation_image_name.'" >';
+				}*/
+				$rightOption 	= My_Functions::generateImages($options->option_equation_image_name, $options->option_equation);
+			} else {
+				$rightOption	= $options->option;
+			}
+		}
+	}
+?>
+
+<!-- BEGIN PAGE -->  
+      <div id="body">
+         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <div id="widget-config" class="modal hide">
+            <div class="modal-header">
+               <button data-dismiss="modal" class="close" type="button">×</button>
+               <h3>Widget Settings</h3>
+            </div>
+            <div class="modal-body">
+               <p>Here will be a configuration form</p>
+            </div>
+         </div>
+         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+         <?php if(isset($this->success) && $this->success != ''){?>
+           	<div id="success" class="alert alert-success"><button class="close" data-dismiss="alert">×</button><?php echo $this->success;?></div>
+           	<?php }?>
+         <?php 
+         		if(isset($this->error) && $this->error != ''){
+         	?>		 <div id="exception" class="alert alert-error">
+         				<button class="close" data-dismiss="alert">×</button>
+         				<?php echo $this->error;?>
+         			</div>
+    		 <?php     	
+        		 }
+        	 ?>
+            <!-- BEGIN PAGE HEADER-->   
+            <div class="row-fluid">
+               <div class="span12">
+                      <!-- BEGIN PAGE TITLE & BREADCRUMB-->		
+					
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="<?php echo $this->url(array('controller'=>'index','action'=>'dashboard', 'module' => 'admin'), null, true);?>">Home</a> <span class="divider">/</span>
+							</li>
+							<li><a href="<?php echo $this->url(array('controller'=>'questions','action'=>'questionlist', 'module' => 'admin'), null, true);?>"">Question Manager</a>
+							<span class="divider">/</span>
+							</li>
+							<li><a href="#">Question Detail</a>
+							</li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+               </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div id="page">
+               <div class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN SAMPLE FORM PORTLET-->	
+                     <div class="widget">
+                     <div class="widget-title">
+									<h4>Question Detail</h4>						
+								</div>
+                        <div class="widget-body form">
+                           <!-- BEGIN FORM-->
+								<table cellpadding="5px;" class="detailtable" border="1">
+									<tr class="tablehead">
+										<th>Question Attirbutes</th>
+			                            <th>Values</th>
+									</tr>
+									<tr class="tablealternaterow">
+										<td>Category</td>
+			                            <td><?php echo $category_code;?></td>
+									</tr>
+									<tr>
+										<td>Question</td>
+										<td>
+											<?php if(!empty($questionImages) && $questionImages != null){
+												$question = My_Functions::generateImages($questionImages, $questionDisplay);
+											}else{$question = $question;}echo nl2br($question);?>
+										</td>
+									</tr>
+									<tr class="tablealternaterow">
+										<td>URL of Question</td>
+										<td><?php if(!empty($url_of_question)){ ?>
+                                                                                    <?php $question_url = $serverUrl->serverUrl() . $baseUrl->baseUrl("/question/questiondetail/".QUESTION_KEY."/".$url_of_question); ?>
+                                                                                    <a target="_blank" href="<?php echo $question_url;?>">
+                                                                                        <?php echo $question_url;?>
+                                                                                    </a>    
+                                                                                    <?php }?>
+                                                                                </td>
+									</tr>
+									
+									<tr >
+										<td>Question Image URL</td>
+		                             	<td><?php echo $question_image_url;?></td>
+									</tr>
+									<tr class="tablealternaterow">
+										<td>Right Answer</td>
+										<td><?php echo $rightOption;?></td>
+									</tr>
+									<tr>
+										<td>Wrong Answer 1</td>
+		                                <td><?php echo $wrongoption[1];?></td>
+		                            </tr>
+									<tr class="tablealternaterow">
+										<td>Wrong Answer 2</td>
+		                                <td><?php echo $wrongoption[2];?></td>
+		                            </tr>
+									<tr>
+										<td>Wrong Answer 3</td>
+										<td><?php echo $wrongoption[3];?></td>
+									</tr>
+		                            <tr class="tablealternaterow">
+										<td>Answer Image URL</td>
+										<td><?php echo $answer_image_url;?></td>
+									</tr>
+									
+		                            <tr >
+										<td>Factoid</td>
+										<td>
+											<?php if(!empty($explanationImage) && $explanationImage != null){
+												$explanation = My_Functions::generateImages($explanationImage, $explanationEquation);
+											}else{$explanation = htmlentities($explanation);}?>
+											<?php echo $explanation; ?>
+										</td>
+									</tr>
+									
+									<tr class="tablealternaterow">
+										<td>Difficulty Level</td>
+										<td>
+		                                 	<?php if($difficulty_level == 'H'){echo "High";}?>
+											<?php if($difficulty_level == 'M'){echo "Medium";}?>
+											<?php if($difficulty_level == 'L'){echo "Low";}?>
+										</td>
+									</tr>
+									<tr >
+										<td>SAT Question</td>
+		                                <td>
+		                                	<?php if($set_question == 'Y'){echo "Yes";} ?>
+			                                <?php if($set_question == 'N'){echo "No";} ?>
+										</td>
+									</tr>
+									<tr class="tablealternaterow">
+										<td>Grade</td>
+										<?php 
+											if(empty($grade))
+						                  	{
+						                  		$tblCategoryGrade	= new Application_Model_DbTable_QuestionCategoryGrade();
+						                  		$gradeData			= $tblCategoryGrade->getgradesInfoUsingCategory($this->question['category_id']);
+						                  		$gradeVal = '';
+						                  		for($k=0;$k<count($gradeData);$k++)
+						                  		{
+						   							if($k == 0){
+						   								$gradeVal = $gradeData[$k]['grade_name'];
+						   							}   
+						   							if($k == (count($gradeData)-1)){
+						   								$gradeVal = $gradeVal." - ".$gradeData[$k]['grade_name'];
+						   							}            			
+						                  		}
+						                 	}
+						                 ?>
+										<td><?php if(!empty($grade)){echo $grade;}else{echo $gradeVal;}?></td>
+									</tr>
+									<tr >
+										<td>Refer Book Name</td>
+		                                <td><?php echo $refer_book_name;?></td>
+		                            </tr>
+		                            <tr class="tablealternaterow">
+										<td>Refer Book Chapter</td>
+		                                <td><?php echo $refer_book_chapter;?></td>
+									</tr>
+									<tr>
+										<td>Refer Article URL</td>
+										<td><?php echo $refer_article_url;?></td>
+									</tr>
+									<tr class="tablealternaterow">
+										<td>Wolframalphaquery</td>
+		                                <td><?php echo $wolframalphaquery;?></td>
+									</tr>
+								</table>
+								<br>
+							<button type="button" class="btn" onClick="returnPage('questions','<?php echo $this->returnPage; ?>');">Go Back</button>
+                           <!-- END FORM-->				
+                        </div>
+                     </div>
+                     <!-- END SAMPLE FORM PORTLET-->
+                  </div>
+               </div>
+            </div>
+            <!-- END PAGE CONTENT-->			
+         </div>
+         <!-- END PAGE CONTAINER--> 

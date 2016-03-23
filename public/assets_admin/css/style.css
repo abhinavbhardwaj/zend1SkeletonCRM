@@ -1,0 +1,26 @@
+.errorA{
+	border-color: #B94A48!important;
+}
+.errorMgsBox{
+	color: #FF0000!important;
+    font-size: 13px!important; 
+    display: none;
+}
+.headerAdminImageRadius{
+    border-radius: 50%;
+    width: 33px;
+    height: 33px;
+    margin-top: -6px;
+}
+.alert-danger, .alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+}
+#logo {
+    margin: 50px auto 0;
+    padding: 0 15px 15px;
+    text-align: center;
+    width: 247px;
+	height: 40px;
+}

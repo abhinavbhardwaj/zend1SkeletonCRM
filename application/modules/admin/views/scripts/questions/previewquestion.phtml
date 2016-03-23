@@ -1,0 +1,172 @@
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+
+<div id="container" class="row-fluid">
+  
+ 
+  <input type="hidden" id="frameWorkEdit" value="">
+  <!-- BEGIN PAGE -->
+  <div>
+    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <div id="widget-config" class="modal hide">
+      <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button">×</button>
+        <h3>Widget Settings</h3>
+      </div>
+      <div class="modal-body">
+        <p>Here will be a configuration form</p>
+      </div>
+    </div>
+    <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->
+      <!-- <div class="row-fluid">
+        <div class="span12">
+        </div>
+      </div> -->
+      <!-- END PAGE HEADER-->
+      <!-- BEGIN PAGE CONTENT-->
+      <div id="page">
+        <div class="row-fluid">
+          <div class="span12">
+            <!-- BEGIN SAMPLE FORM PORTLET-->
+            <div class="widget">
+              <div class="widget-title">
+                <h4>View Question</h4>
+              </div>
+              <div class="widget-body form">
+                  <div class="col-lg-3" style="width:100px; float:left;">
+                <!-- BEGIN FORM-->
+                <div class="control-group">
+                  <div class="row-fluid ">
+                      <div class="tab-view"> <a id = "textViewLink" class="overlayOnSelectedSizePreview" href="javascript:void(0);" onclick="viewSize('view-tab1');"><img src="<?php echo $this->baseUrl();?>/assets_admin/images/cell_phone-48.png" alt=""><br>
+                      320x480 </a> </div>
+                    <div class="tab-view"> <a id= "textViewLink1" href="javascript:void(0);" onclick="viewSize('view-tab2');"><img src="<?php echo $this->baseUrl();?>/assets_admin/images/cell_phone-48.png" alt=""><br>
+                      360x640 </a> </div>
+                    <div class="tab-view"> <a id= "textViewLink2" href="javascript:void(0);" onclick="viewSize('view-tab3');"><img src="<?php echo $this->baseUrl();?>/assets_admin/images/cell_phone-48.png" alt=""><br>
+                      480x800 </a> </div>
+                   <div class="tab-view"> </div>
+                  </div>
+                </div>
+              </div>
+                  <div class="col-lg-9" style="width:550px;float:right;">
+                
+                      <div class="text-view"><div class="previewHeadingTab previewHeadingTab1">View in 320x480</div></div>
+                <div class="view-mode view-tab1">
+                  <div class="mobile-view">
+                    <div class="top-section">
+                      <div class="span4 previewHeyTextLogo">
+                        <div class="view-mobile-img"> <img src="<?php echo $this->baseUrl();?>/images/logo.png" alt=""> </div>
+                      </div>
+                      <div class="span8 HeyTextParent">
+                        <div class="hey-text">
+                          <div class="heytext-arrow"><img src="<?php echo $this->baseUrl();?>/assets_admin/images/text-arrow.png" alt=""></div>
+                          Question from finny! </div>
+                      </div>
+                    </div>
+                    <div class="qus-view">
+                      <div class="Currentaffairs-text">Question</div>
+                      <div class="qus-box"><?php echo $this->question;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->rigthAnswer;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer1;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer2;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer3;?></div>
+                      <div class="ans-btn">Answer</div>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <div class="view-mode view-tab2"  style="display:none">
+                  <div class="mobile-view">
+                    <div class="top-section">
+                      <div class="span4 previewHeyTextLogo">
+                        <div class="view-mobile-img"> <img src="<?php echo $this->baseUrl();?>/images/logo.png" alt=""> </div>
+                      </div>
+                      <div class="span8 HeyTextParent">
+                        <div class="hey-text">
+                          <div class="heytext-arrow"><img src="<?php echo $this->baseUrl();?>/assets_admin/images/text-arrow.png" alt=""></div>
+                          Question from finny! </div>
+                      </div>
+                    </div>
+                  <div class="qus-view">
+                      <div class="Currentaffairs-text">Question</div>
+                      <div class="qus-box"><?php echo $this->question;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->rigthAnswer;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer1;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer2;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer3;?></div>
+                      <div class="ans-btn">Answer</div>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <div class="view-mode view-tab3"  style="display:none">
+                  <div class="mobile-view">
+                    <div class="top-section">
+                      <div class="span4 previewHeyTextLogo">
+                        <div class="view-mobile-img"> <img src="<?php echo $this->baseUrl();?>/images/logo.png" alt=""> </div>
+                      </div>
+                      <div class="span8 HeyTextParent">
+                        <div class="hey-text">
+                          <div class="heytext-arrow"><img src="<?php echo $this->baseUrl();?>/assets_admin/images/text-arrow.png" alt=""></div>
+                          Question from finny! </div>
+                      </div>
+                    </div>
+                  <div class="qus-view">
+                      <div class="Currentaffairs-text">Question</div>
+                      <div class="qus-box"><?php echo $this->question;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->rigthAnswer;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer1;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer2;?></div>
+                      <div class="qus-box">
+                        <div class="ans-check"></div>
+                        <?php echo $this->wrongAnswer3;?></div>
+                      <div class="ans-btn">Answer</div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="clearfix"></div>
+               <hr>
+                <div class="previewQuestionbtn previewButtontab1">
+    <button type="button" class="btn btn-primary" onclick="questionValidate('','previewPopup');">Save</button>
+							<input type="button" class="btn"
+										 onClick="closeColorBox();" 
+										value="Cancel">
+								</div>
+                <!-- END FORM-->
+              </div>
+            </div>
+            <!-- END SAMPLE FORM PORTLET-->
+          </div>
+        </div>
+      </div>
+      <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+  </div>

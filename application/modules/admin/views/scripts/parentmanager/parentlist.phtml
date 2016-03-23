@@ -1,0 +1,212 @@
+<script src="<?php echo $this->baseUrl();?>/assets_admin/data-tables/jquery.dataTables.min.js"></script>
+<?php $perPage = $this->perpage;?>
+<!-- BEGIN PAGE -->
+
+<div id="body">
+  <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+ 	<div id="widget-config" class="modal hide">
+    	<div class="modal-header">
+      		<button data-dismiss="modal" class="close" type="button">×</button>
+      		<h3>Widget Settings</h3>
+    	</div>
+    	<div class="modal-body">
+      		<p>Here will be a configuration form</p>
+    	</div>
+  	</div>
+	<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+	<!-- BEGIN PAGE CONTAINER-->
+  	<div class="container-fluid">
+    	<?php if(isset($this->success) && $this->success != ''){?>
+    	<div id="success" class="alert alert-success">
+      		<button class="close" data-dismiss="alert">×</button>
+      		<?php echo $this->success;?>
+      	</div>
+    	<?php }?>
+    	<?php if(isset($this->error) && $this->error != ''){?>
+    	<div id="exception" class="alert alert-error">
+      		<button class="close" data-dismiss="alert">×</button>
+      		<?php echo $this->error;?> 
+      	</div>
+    	<?php } ?>
+    	<!-- BEGIN PAGE HEADER-->
+    	<div class="row-fluid">
+      		<div class="span12">
+        		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+        		<ul class="breadcrumb">
+          			<li> <i class="icon-home"></i> <a href="<?php echo $this->url(array('controller'=>'index','action'=>'dashboard', 'module' => 'admin'), null, true);?>">Home</a> <span class="divider">/</span> </li>
+          			<li><a href="#">Parent Manager</a>  </li>
+          			<li style="float:right"><a onClick="returnPage('parentmanager','deleteparent');" style="cursor:pointer;" title="Delete parent account"><img src="<?php echo $this->baseUrl();?>/assets_admin/images/minus white.png" /></a></li>
+        		</ul>
+        		<!-- END PAGE TITLE & BREADCRUMB-->
+      		</div>
+    	</div>
+    	<!-- END PAGE HEADER-->
+    	<!-- BEGIN PAGE CONTENT-->
+    	<div id="page" class="dashboard">
+      		<div class="row-fluid">
+        		<div class="span12">
+          		<!-- BEGIN EXAMPLE TABLE PORTLET-->
+          		<div class="widget">
+            		<div class="widget-title">
+             			<h4>Parent List</h4>
+            		</div>
+            		<div class="widget-body">
+              			<form id="searchfilter" class="Margin_0" method="post" name="searchfilter" action="<?php array('controller' =>'parentmanager', 'action' =>'parentlist', 'module' =>'admin');?>">
+                			<div class="row-fluid">
+                  				<div class="control-group Left">
+                    				<input type="text"  class="span7 popovers" id="search" placeholder="Search Keyword" name="search" value="<?php  echo $this->search;?>"/>
+                    				<input type ="button" class="btn btn-primary serach_Button"  value="Search" onclick="getfilteredparentsearch();">
+                  				</div>
+                			</div>
+              			</form>
+              			
+              			<div class="overFlow">
+              			<?php if($this->search != ''){?>
+             	 		<ul class="breadcrumb">
+                			<li> You have searched for : </li>
+                			<li> <?php echo $this->search;?> </li>
+               				<li><span class="divider">/</span> <a href="<?php echo $this->url(array('controller'=>'parentmanager','action'=>'parentlist', 'module' => 'admin'), null, true);?>">Clear search</a> </li>
+              			</ul>
+              			<?php }?>
+              				<table class="table table-striped table-bordered" id="parentlist" width="100%" >
+                				<thead>
+				                  	<tr>
+					                    <th class="hidden-phone fontsize15" width="5%">S.No.</th>
+					                    <th class="hidden-phone fontsize15" width="10%">Email ID</th>
+					                    <th class="hidden-phone fontsize15" width="10%">Registration Date</th>
+                                        <th class="hidden-phone fontsize15" width="5%">No. of Children</th>
+                                        <th class="hidden-phone fontsize15" width="10%">Child Display Name</th>
+                                        <th class="hidden-phone fontsize15" width="10%">Child Added Date</th>
+                                        <th class="hidden-phone fontsize15" width="10%">COPPA Status</th>
+                                        <th class="hidden-phone fontsize15" width="10%">Quiz Questions Asked</th>
+                                        <th class="hidden-phone fontsize15" width="10%">System Triggered Questions</th>
+                                        <th class="hidden-phone fontsize15" width="10%">Last Question Asked Date</th>
+					                    <th class="hidden-phone fontsize15" width="10%">Operation</th>
+				                  	</tr>
+                				</thead>
+                				<tbody>
+                				
+                  				<?php if($this->totalRecord > 0){ foreach($this->parentData as $pData){ 
+                  					$name = $pData['first_name']." ".$pData['middle_name']." ".$pData['last_name'];
+                  					$name = trim(htmlentities($name));
+                  					?>
+                  					<tr>
+					                    <td class="hidden-phone center fontsize15">&nbsp;<?php echo $this->counter;?></td>
+					                    <td class="hidden-phone center fontsize15">&nbsp;<?php echo $pData['email'];?></td>
+					                    <td class="hidden-phone center fontsize15"><?php echo date("M d, Y H:i:s", strtotime($pData['parent_created_date']));?></td>
+                                        <td class="hidden-phone center fontsize15">&nbsp;<?php if($pData['TotalChild'] >0){?><a href="<?php echo $this->url(array('controller' =>'parentmanager','action'=>'childlist','module'=>'admin','parid' =>$pData['parent_id']),null,true);?>" title="Child List"><?php } echo $pData['TotalChild'];if($pData['TotalChild'] >0){?></a><?php }?></td>
+                                        <td class="hidden-phone center fontsize15">&nbsp;<?php echo $pData['firstname'];?></td>
+                                        <td class="hidden-phone center fontsize15">&nbsp;<?php echo (empty($pData['child_created_date'])) ? '' :  date("M d, Y H:i:s", strtotime($pData['child_created_date']));?></td>
+                                        <td class="hidden-phone center fontsize15">&nbsp;
+                                            <?php if($pData['coppa_required'] == 0) {
+                                                echo 'Not Required';
+                                            } else {
+                                                if($pData['coppa_accepted'] == 1){    
+                                                    echo 'Accepted';
+                                                } else {
+                                                    echo 'Pending';
+                                                }
+                                            }?>
+                                        </td>
+                                        <td class="hidden-phone center fontsize15"><?php echo $pData['totalquizquestion'];?></td>
+                                        <td class="hidden-phone center fontsize15"><?php echo $pData['totalquestion'];?></td>
+                                        <td class="hidden-phone center fontsize15">&nbsp;<?php echo (!empty($pData['last_question_date'])) ? date("M d, Y H:i:s", strtotime($pData['last_question_date'])) :  '';?></td>
+                                        
+					                    <td class="hidden-phone center fontsize15">&nbsp;
+					                    	<a class='iframe' href="<?php echo $this->url(array('controller' =>'parentmanager','action'=>'resetpassword','module'=>'admin','id' =>$pData['user_id']),null,true);?>" title="Reset Password">
+					                    	<img src="<?php echo $this->baseUrl();?>/assets_admin/images/resetpass.png" ></a>&nbsp;&nbsp;
+		                      				<?php if($pData['is_active']== 'N'){?>
+						                    <a href="javascript:void(0);" onclick="ChangeStatus('Y',<?php echo $pData['user_id']?>);" title="Activate this user">
+						                    	<img src="<?php echo $this->baseUrl();?>/assets_admin/images/inactive.png" />
+						                   	</a>
+						                    <?php }elseif($pData['is_active']== 'Y'){?>
+						                    <a href="javascript:void(0);" onclick="ChangeStatus('N',<?php echo $pData['user_id']?>);" title="Deactivate this user">
+						                    	<img src="<?php echo $this->baseUrl();?>/assets_admin/images/active.png" />
+						                   	</a>
+						                    <?php }?>
+                    					</td>
+                  					</tr>
+                  					<?php 
+                  					$this->counter++;
+                  				      } 
+                  				  }else{	?>
+                  					<tr class="odd gradeX">
+                    					<td class="hidden-phone" colspan="11" style="text-align: center">NO RECORD FOUND</td>
+                  					</tr>
+                  					<?php }?>
+                				</tbody>
+              				</table>
+              			</div>
+            		</div>
+          		</div>
+          		<?php if($this->totalRecord > $perPage){?>
+          		<form name="searchFormSort" id="searchFormSort" action="<?php  echo $this->url(array('controller' => 'parentmanager', 'action' => 'parentlist', 'module' => 'admin'),null,true);?>" method="post" class="RecordPerPage">
+            		<span class="RecordPerPageSpan">Show&nbsp;</span><select  name="perpage" class="span6" onchange="javascript:sub_per_page('<?php echo curPageURL();?>',this.value);" tabindex="1" id="">
+                                <option value="10" <?php if($perPage == '10'){ echo 'selected=selected';}?>>10</option>
+                                <option value="25" <?php if($perPage == '25'){ echo 'selected=selected';}?>>25</option>
+                                <option value="50" <?php if($perPage == '50'){ echo 'selected=selected';}?>>50</option>
+                                <option value="100" <?php if($perPage == '100'){ echo 'selected=selected';}?>>100</option>
+                                <option value="250" <?php if($perPage == '250'){ echo 'selected=selected';}?>>250</option>
+                                <option value="500" <?php if($perPage == '500'){ echo 'selected=selected';}?>>500</option>
+            		</select><span class="RecordPerPageSpan">&nbsp;entries</span>
+            		<input type="hidden" name="search" class="search" value="<?php  echo $this->search;?>" />
+          		</form>
+          		<?php }?>
+          		<?php  
+					// pagination start
+					 if($this->totalRecord> 0){
+						if($this->totalRecord > $perPage){
+							echo $this->paginationControl($this->parentData, 'Sliding', 'paginationquestion.phtml',array('search' => $this->search,'perpage' =>$perPage));
+						}else{
+						}
+					}
+					// pagination ends ?>
+          		<!-- END EXAMPLE TABLE PORTLET-->
+        	</div>
+      	</div>
+    </div>
+    <!-- END PAGE CONTENT-->
+  </div>
+  <!-- END PAGE CONTAINER-->
+</div>
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+<link
+	rel="stylesheet"
+	href="<?php echo $this->baseUrl();?>/assets_admin/css/colorbox.css" />
+<script
+	src="<?php echo $this->baseUrl();?>/assets_admin/js/jquery.colorbox.js"></script>
+<script>
+function applyDataTable(tableid,sorting)
+{
+	oTable = $('#'+tableid).dataTable({
+		"bPaginate": false,
+		"bFilter": false,
+		"bInfo":false,
+		"aaSorting": [],
+		"aoColumnDefs": [{
+              bSortable: false,
+              aTargets: sorting,
+        }],
+        "aoColumns": [null,null,null,null,null,null,null,{ "sType": 'numeric' },{ "sType": 'numeric' },null,null]
+	});
+}
+$(document).ready(function(){
+	var sorting =[0,10];
+	applyDataTable('parentlist',sorting);
+});
+</script>
+<script type="text/javascript">
+function sub_per_page(url,value)
+{
+	var p =url.indexOf("/perpage");
+	if(p == -1){
+		var urlone = url;
+	} else {
+		var urlone = url.split('/perpage')[0];		
+	}
+	url = urlone+'/perpage/'+value;
+	window.location= url;
+}
+</script>

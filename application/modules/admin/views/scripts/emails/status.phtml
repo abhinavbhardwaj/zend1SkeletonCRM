@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Admin User</title>
+        <style type="text/css">
+            <!--
+            .style1 {font-size: 18px}
+            .btn {
+		    -moz-user-select: none;
+		    border-radius: 4px 4px 4px 4px;
+		    cursor: pointer;
+		    display: inline-block;
+		    font-family: 'segoe_uisemibold';
+		    font-size: 14px;
+		    font-weight: normal;
+		    line-height: 1.42857;
+		    margin-bottom: 0;
+		    padding: 7px 20px;
+		    text-align: center;
+		    vertical-align: middle;
+		    white-space: nowrap;
+		}
+		.btn-primary {
+		   background-color: #262261;
+		   color:#FFFFFF;
+		    border: 1px solid #3A507C;
+		    text-shadow: 0 0 0 #2D4D8E;
+		}
+            -->
+        </style>
+        </head>
+    <body bgcolor="#e0e1e5" style="padding:3px; margin:0px;">
+        <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="center">
+                                <table width="700" border="0" cellspacing="0" cellpadding="0" bgcolor="#f8fafa" style="border-radius:6px;">
+                                    <tr>
+                                        <td width="256" style="padding:5px;"><a href="#"><img src="<?php echo HOST_NAME ?>/images/logo.png" width="55" height="55" border="0" /></a></td>
+                                        <td width="444"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                                <tr>
+                                                    <td width="85%" align="right"><?php echo $this->name; ?></td>
+                                                    <td width="15%" align="center" ><span style="padding:2px; display:block; background-color:#FFFFFF; border:#CCCCCC solid 1px; border-radius:2px; width:32px; height:30px;"><img src="<?php echo $this->profile_picture; ?>" width="32" height="30" /></span></td>
+                                                </tr>
+                                            </table></td>
+                                    </tr>
+                                </table>        </td>
+                        </tr>
+                    </table></td>
+            </tr>
+            <tr>
+                <td height="20" align="center" style="font-size:0px; height:10px;" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td><table width="700" cellspacing="0" cellpadding="0" border="0"  align="center" class="ohie_sortable" >
+                        <tbody>
+                            <tr>
+                                <td width="100%" align="center"  style=" border-radius:6px;"><table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#fff" align="center" class="ohie_sortable"  style=" border-radius:6px;">
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%" align="center" style=" border-radius:6px;" ><table width="700" cellspacing="0" cellpadding="0" border="0"  align="center" class="ohie_sortable" style="border-width: 1px; border-style: solid; border-color: #ccc; font-family:Arial, Helvetica, sans-serif; border-radius:6px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td width="100%" align="center" style=" border-radius:6px;" ><table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#fff" align="center" class="ohie_sortable" style=" border-radius:6px;" >
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td width="100%" align="center" style=" border-radius:6px;"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; background-color:#FFFFFF; border-radius:6px;">
+                                                                                        <tr >
+                                                                                            <td align="center" valign="middle"  style="padding:15px 8px; font-size:15px; vertical-align:top; font-family:'Arial, Helvetica, sans-serif'; font-size:24px;color:#4C649B; " ><span style=" font-weight:bold; padding:20px;">Hello , <?php echo $this->name; ?></span><br />
+                                                                                                <p style="font-size:16px; text-align:center">Your myfinny account has been <?php echo ucwords(strtolower($this->status)); ?> by administrator.<br />Please contact to admin for more details.
+                                                                                                </p>                </td>
+                                                                                        </tr>
+                                                                                    </table></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table></td>
+                                                            </tr>
+                                                            
+                                                            <tr >
+                                                                <td  style="padding:5px 8px; font-size:15px; vertical-align:top; font-family:'Arial, Helvetica, sans-serif'; font-size:16px;color:#7f7f7f; " align="center" >&nbsp;</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table></td>
+                                            </tr>
+                                        </tbody>
+                                    </table></td>
+                            </tr>
+                        </tbody>
+                    </table></td>
+            </tr>
+        </table>
+
+    </body>
+</html>
+
+
+
+

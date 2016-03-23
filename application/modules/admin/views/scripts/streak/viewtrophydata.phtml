@@ -1,0 +1,142 @@
+<?php
+echo $this->headLink()
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/jquery-ui-1.8.16.custom.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/bootstrap/css/bootstrap.min.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/bootstrap/css/bootstrap-responsive.min.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/style.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/style_responsive.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/uniform/css/uniform.default.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/data-tables/DT_bootstrap.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/tiny_style.css')
+        ->appendStylesheet($this->baseUrl() . '/css/apprise.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/developer.css');
+
+echo $this->headScript()
+        ->appendFile($this->baseUrl() . '/assets_admin/js/jquery-1.8.2.min.js')
+        ->appendFile($this->baseUrl() . '/assets_admin/js/validation.js')
+        ->appendFile($this->baseUrl() . '/assets_admin/js/tinybox.js')
+        ->appendFile($this->baseUrl() . '/assets_admin/js/validation.js')
+        ->appendFile($this->baseUrl() . '/assets_admin/js/functions.js')
+?>
+
+
+
+
+<?php
+$trophy_id = $this->trophyData['streak_trophy_id'];
+$title = $this->trophyData['title'];
+$description = $this->trophyData['description'];
+$streak = $this->trophyData['streak'];
+$created_date = $this->trophyData['created_date'];
+$image = $this->trophyData['image'];
+
+$i = 1;
+?>
+<!-- BEGIN PAGE -->  
+<div id="body">
+    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <div id="widget-config" class="modal hide">
+        <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button">×</button>
+            <h3>Widget Settings</h3>
+        </div>
+        <div class="modal-body">
+            <p>Here will be a configuration form</p>
+        </div>
+    </div>
+    <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+
+
+
+        <div id="page">
+            <div class="row-fluid">
+                <div class="span12">
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                    <ul class="breadcrumb">
+                        <li><i class="icon-home"></i> <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'dashboard', 'module' => 'admin'), null, true); ?>">Home</a>
+                            <span class="divider">/</span>
+                        </li>
+                        <li><a href="<?php echo $this->url(array('controller' => 'trophies', 'action' => 'trophylist', 'module' => 'admin'), null, true); ?>">Trophy Manager</a> 
+                            <span class="divider">/</span>
+                        </li>
+                        <li><a href="<?php echo $this->url(array('controller' => 'streak', 'action' => 'trophylist', 'module' => 'admin'), null, true); ?>">Streak (Overall)</a> 
+                            <span class="divider">/</span>
+                        </li>
+                        <li><a class='iframe'
+                               href="javascript:void(0)">View
+                            </a></li>
+                    </ul>
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+                    <!-- BEGIN SAMPLE FORM PORTLET-->	
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4><i class="icon-reorder"></i>View Trophy</h4>
+
+                        </div>
+
+
+
+                        <div class="widget-body form">
+                            <!-- BEGIN FORM-->
+
+                            <table cellpadding="5px;" class="detailtable" border="1">
+                                <tr class="tablehead">
+
+                                <tr class="tablealternaterow">
+                                    <td>1</td>
+                                    <td>Title</td>
+                                    <td><?php echo htmlentities($title); ?></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Description</td>
+                                    <td><?php echo htmlentities($description); ?></td>
+                                </tr>
+
+                                <tr class="tablealternaterow">
+                                    <td>3</td>
+                                    <td>Streak</td>
+                                    <td><?php echo number_format($streak); ?></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>image</td>
+                                    <td><img src="<?php echo AWS_S3_URL . 'trophy/' . $image; ?>" border="0" style="width:100px; height:100px;"/></td>
+                                </tr>
+                                </tr>
+                                <tr class="tablealternaterow">
+                                    <td>4</td>
+                                    <td>Date</td>
+                                    <td><?php echo $created_date; ?></td>
+                                </tr>
+                                </tr>
+
+
+                            </table>
+                            <div class="form-actions">
+
+                                <input type="button" class="btn btn-primary"
+                                       onClick="returnPage('streak', 'trophylist');" 
+                                       value="Back">
+                            </div>      
+
+
+
+                            <br>
+
+                            <!-- END FORM-->				
+                            <!-- END FORM-->				
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE CONTENT-->			
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>
+<!-- END PAGE --> 

@@ -1,0 +1,112 @@
+<?php 
+	$supportData  = $this->supportData; 
+?>
+<!-- BEGIN PAGE -->  
+      <div id="body">
+         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <div id="widget-config" class="modal hide">
+            <div class="modal-header">
+               <button data-dismiss="modal" class="close" type="button">×</button>
+               <h3>Widget Settings</h3>
+            </div>
+            <div class="modal-body">
+               <p>Here will be a configuration form</p>
+            </div>
+         </div>
+         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+        <?php if(isset($this->success) && $this->success != ''){?>
+           	<div id="success" class="alert alert-success"><button class="close" data-dismiss="alert">×</button><?php echo $this->success;?></div>
+           	<?php }?>
+         <?php 
+         		if(isset($this->error) && $this->error != ''){
+         	?>		 <div id="exception" class="alert alert-error">
+         				<button class="close" data-dismiss="alert">×</button>
+         				<?php echo $this->error;?>
+         			</div>
+    		 <?php     	
+        		 }
+        	 ?>
+            <!-- BEGIN PAGE HEADER-->   
+            <div class="row-fluid">
+               <div class="span12">
+                      <!-- BEGIN PAGE TITLE & BREADCRUMB-->		
+						
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="<?php echo $this->url(array('controller'=>'index','action'=>'dashboard', 'module' => 'admin'), null, true);?>">Home</a> <span class="divider">/</span>
+							</li>
+							<li><a href="<?php echo $this->url(array('controller'=>'cms','action'=>'aboutus', 'module' => 'admin'), null, true);?>"">CMS Manager</a>
+							<span class="divider">/</span>
+							</li>
+                                                        <li><a href="<?php echo $this->url(array('controller'=>'cms','action'=>'support', 'module' => 'admin'), null, true);?>"">Support</a>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+               </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div id="page">
+               <div class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN SAMPLE FORM PORTLET-->	
+                     <div class="widget">
+                         <div class="widget-title TabsTop">
+                         	<ul>
+                            	<li>
+                                	<a href="<?php echo $this->url(array('controller' => 'cms', 'action' =>'aboutus', 'module' => 'admin'),null,true);?>">About Us</a>
+                                </li>
+                                <li>
+                                	<a href="<?php echo $this->url(array('controller' => 'cms', 'action' =>'privacypolicy', 'module' => 'admin'),null,true);?>">Privacy Policy</a>
+                                </li>
+                                <li>
+                                	<a href="#" class="active">Support</a>
+                                </li>
+                                 <li>
+                                	<a href="<?php echo $this->url(array('controller' => 'cms', 'action' =>'eula', 'module' => 'admin'),null,true);?>">EULA</a>
+                                </li>
+                                <li>
+                                	<a href="<?php echo $this->url(array('controller' => 'cms', 'action' =>'survey', 'module' => 'admin'),null,true);?>">Survey</a>
+                                </li>
+                            </ul>
+                          						
+                        </div>
+                        <div class="widget-body form">
+                           <!-- BEGIN FORM-->
+                            <form name="cms" id="cms" action="<?php array('controller' =>'cms', 'action' =>'support', 'module' =>'admin');?>" method="post" class="form-horizontal" onSubmit="return pageBlocValidate();">
+                              <div class="control-group">
+                                 <label class="control-label Grey" for="input3"><span class="error">*</span>Page Title:</label>
+                                 <div class="controls">
+                                     <input type="text"  class="span6 popovers" id="page_title" name="page_title" readonly="readonly" maxlength="50"  value="<?php echo $supportData->title;?>" />
+                                 	<div style="color:#FF0000;display:none" id="page_title_error" ></div>
+                                 	<input type="hidden"  name="support_id"  value="<?php echo $supportData->page_id;?>" />
+                                 </div>
+                              </div>
+                               
+                              <div class="control-group">
+                                 <label class="control-label Grey" for="inputRemarks"><span class="error">*</span>Description:</label>
+                                 <div class="controls width585">
+                                    <textarea class="span6" rows="3" id="block1" name="support_desc" style="width:800px;height:200px;"><?php echo $supportData->description;?></textarea>
+                                 <div style="color:#FF0000;display:none" id="about_desc_error"></div>
+                                 </div>
+                              </div>
+                             
+                              <div class="form-actions">
+                                 <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="button" class="btn" onClick="returnPage('cms','support');">Cancel</button>
+                              </div>
+                           </form>
+                           <!-- END FORM-->				
+                        </div>
+                     </div>
+                     <!-- END SAMPLE FORM PORTLET-->
+                  </div>
+               </div>
+            </div>
+            <!-- END PAGE CONTENT-->			
+         </div>
+         <!-- END PAGE CONTAINER-->
+      </div>
+      <!-- END PAGE --> 

@@ -1,0 +1,103 @@
+<?php
+require_once APPLICATION_PATH.'/../library/function_image_array.php';
+$video = $this->video; // assigns data to view file
+$id = parse_yturl($video['video_url']);
+?>
+<!-- TinyMCE -->
+<!-- BEGIN PAGE -->  
+      <div id="body">
+         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <div id="widget-config" class="modal hide">
+            <div class="modal-header">
+               <button data-dismiss="modal" class="close" type="button">×</button>
+               <h3>Widget Settings</h3>
+            </div>
+            <div class="modal-body">
+               <p>Here will be a configuration form</p>
+            </div>
+         </div>
+         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+         <?php if(isset($this->success) && $this->success != ''){?>
+           	<div id="success" class="alert alert-success"><button class="close" data-dismiss="alert">×</button><?php echo $this->success;?></div>
+           	<?php }?>
+         <?php 
+         		if(isset($this->error) && $this->error != ''){
+         	?>		 <div id="exception" class="alert alert-error">
+         				<button class="close" data-dismiss="alert">×</button>
+         				<?php echo $this->error;?>
+         			</div>
+    		 <?php     	
+        		 }
+        	 ?>
+            <!-- BEGIN PAGE HEADER-->   
+            <div class="row-fluid">
+               <div class="span12">
+                      <!-- BEGIN PAGE TITLE & BREADCRUMB-->		
+						
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="<?php echo $this->url(array('controller'=>'index','action'=>'dashboard', 'module' => 'admin'), null, true);?>">Home</a> <span class="divider">/</span>
+							</li>
+							<li><a href="<?php echo $this->url(array('controller'=>'video','action'=>'videolist', 'module' => 'admin'), null, true);?>">Video Manager</a>
+							</li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+               </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div id="page">
+               <div class="row-fluid">
+                  <div class="span12">
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+							<div class="widget">
+								<div class="widget-title">
+									<h4>Video</h4>							
+								</div>
+								<div class="widget-body">
+							<span class="titleMargin">	<?php echo $video['video_title'];?></span>
+							<span class="EditIconMargin">
+                                <input type="button" class="btn btn-primary serach_Button" value="Update Video" onclick="location.href='<?php echo $this->url(array('controller'=>'video','action'=>'updatevideo', 'module' => 'admin'), null, true);?>';" />
+                            </span>
+														<div class="topMargin"> <iframe  type="text/html" width="480px" height="300px"
+   src="<?php echo YOUTUBE_URL.$id?>?rel=0&wmode=opaque&modestbranding=1"
+  frameborder="0"></iframe></div>
+  
+									<!--  <table class="table table-striped table-bordered" id="sample_1">
+										<thead>
+											<tr>
+												<th style="width:8px"><input type="checkbox" class="group-checkable" data-set=".checkboxes" /></th>
+												<th>Title</th>
+												<th class="hidden-phone">Video</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="odd gradeX">
+												<td><input type="checkbox" class="checkboxes" value="1" /></td>
+												<td><?php echo $video['video_title'];?></td>
+												<td class="hidden-phone">
+        	 									 <iframe  type="text/html" width="80%" height="280"
+   src="http://www.youtube.com/embed/<?php// echo $id?>?rel=0&wmode=opaque&modestbranding=1"
+  frameborder="0"></iframe>
+        	 									</td>
+												<td class="center">
+													<a href="<?php echo $this->url(array('controller'=>'video','action'=>'updatevideo', 'module' => 'admin'), null, true);?>" class="icon huge"><i class="icon-pencil"></i></a>&nbsp;
+												</td>
+											</tr>
+										</tbody>
+									</table>-->
+								</div>
+							</div>
+							<!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
+               </div>
+            </div>
+            <!-- END PAGE CONTENT-->			
+         </div>
+         <!-- END PAGE CONTAINER-->
+      </div>
+      <!-- END PAGE --> 

@@ -1,0 +1,97 @@
+<?php 
+	//$aboutData  = $this->aboutData; 
+?>
+<!-- TinyMCE -->
+<!-- BEGIN PAGE -->  
+      <div id="body">
+         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <div id="widget-config" class="modal hide">
+            <div class="modal-header">
+               <button data-dismiss="modal" class="close" type="button">×</button>
+               <h3>Widget Settings</h3>
+            </div>
+            <div class="modal-body">
+               <p>Here will be a configuration form</p>
+            </div>
+         </div>
+         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+         <?php if(isset($this->success) && $this->success != ''){?>
+           	<div id="success" class="alert alert-success"><button class="close" data-dismiss="alert">×</button><?php echo $this->success;?></div>
+           	<?php }?>
+         <?php 
+         		if(isset($this->error) && $this->error != ''){
+         	?>		 <div id="exception" class="alert alert-error">
+         				<button class="close" data-dismiss="alert">×</button>
+         				<?php echo $this->error;?>
+         			</div>
+    		 <?php     	
+        		 }
+        	 ?>
+        
+        
+            <!-- BEGIN PAGE HEADER-->   
+            <div class="row-fluid">
+               <div class="span12">
+                      <!-- BEGIN PAGE TITLE & BREADCRUMB-->		
+					
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="<?php echo $this->url(array('controller'=>'index','action'=>'dashboard', 'module' => 'admin'), null, true);?>">Home</a> <span class="divider">/</span>
+							</li>
+							<li><a href="<?php echo $this->url(array('controller'=>'questions','action'=>'addcategory', 'module' => 'admin'), null, true);?>"">Category Manager</a>
+							<span class="divider">/</span>
+							</li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+               </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div id="page">
+               <div class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN SAMPLE FORM PORTLET-->	
+                     <div class="widget">
+                         <div class="widget-title">
+                           <h4><i class="icon-reorder"></i>Update Category</h4>
+                          
+                        </div>
+                        <div class="widget-body form">
+                           <!-- BEGIN FORM-->
+                            <form name="cms" id="cms" action="<?php array('controller' =>'questions', 'action' =>'updatecategorycode', 'module' =>'admin');?>" method="post" class="form-horizontal" onsubmit="return validateCategory()">
+                              
+                              <table width="90%" class="tableCode" cellspacing="8" cellpadding="8">
+                   			    
+                   				  <tr>
+                   				   <td width="15%" class="Gray"><span class="error">*</span>Enter Category</td>
+                   				   <td width="85%" colspan="3">
+                   				   			<input type="text"  class="span6 popovers" id="category" name="category" data-trigger="hover"  value="<?php echo strtoupper($this->categoryData['category_code']);?>" />
+                                 			<input type ="button" class="btn btn-primary" id="checkcategorybutton" value="Check Validity" onclick="checkCategoryNew()">
+                                 			<input type="hidden"   name="old_category_id" id="old_category_id" value="<?php echo $this->categoryId;?>"/>
+                                 	</td>
+                              </tr>
+                              </table>
+                              
+                             
+                               
+                     <div id="display_categoryfileds" >          
+                               
+
+                  </div>            
+                              
+                           </form>
+                           <!-- END FORM-->				
+                        </div>
+                     </div>
+                     <!-- END SAMPLE FORM PORTLET-->
+                  </div>
+               </div>
+            </div>
+            <!-- END PAGE CONTENT-->			
+         </div>
+         <!-- END PAGE CONTAINER-->
+      </div>
+      <!-- END PAGE --> 

@@ -1,0 +1,94 @@
+<?php
+echo $this->headLink()
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/jquery-ui-1.8.16.custom.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/bootstrap/css/bootstrap.min.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/bootstrap/css/bootstrap-responsive.min.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/style.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/style_responsive.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/uniform/css/uniform.default.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/data-tables/DT_bootstrap.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/tiny_style.css')
+        ->appendStylesheet($this->baseUrl() . '/css/apprise.css')
+        ->appendStylesheet($this->baseUrl() . '/assets_admin/css/developer.css');
+
+echo $this->headScript()
+        ->appendFile($this->baseUrl() . '/assets_admin/js/jquery-1.8.2.min.js')
+        ->appendFile($this->baseUrl() . '/assets_admin/js/validation.js')
+        ->appendFile($this->baseUrl() . '/assets_admin/js/tinybox.js')
+        ->appendFile($this->baseUrl() . '/assets_admin/js/validation.js')
+        ->appendFile($this->baseUrl() . '/assets_admin/js/functions.js')
+?>
+
+
+
+
+<?php
+$trophy_id = $this->trophyData['trophy_id'];
+$title = $this->trophyData['title'];
+$description = $this->trophyData['description'];
+$points = $this->trophyData['points'];
+$created_date = $this->trophyData['created_date'];
+$image = $this->trophyData['image'];
+
+$i = 1;
+?>
+<div id="page"><div class="widget-title">
+        <h4><i class="icon-reorder"></i>View Trophy</h4>
+
+    </div>
+    <div class="row-fluid">
+
+        <div class="span12">
+            <!-- BEGIN SAMPLE FORM PORTLET-->	
+            <div class="widget">
+                <div class="widget-body form">
+                    <!-- BEGIN FORM-->
+
+                    <table cellpadding="5px;" class="detailtable" border="1">
+                        <tr class="tablehead">
+
+                        <tr class="tablealternaterow">
+                            <td>1</td>
+                            <td>Title</td>
+                            <td><?php echo $title; ?></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Description</td>
+                            <td><?php echo $description; ?></td>
+                        </tr>
+
+                        <tr class="tablealternaterow">
+                            <td>3</td>
+                            <td>Coins</td>
+                            <td><?php echo $points; ?></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>image</td>
+                            <td><img src="<?php echo $this->baseUrl(); ?>/images/trophy/<?php echo $image; ?>" border="0" style="width:100px; height:100px;"/></td>
+                        </tr>
+                        </tr>
+                        <tr class="tablealternaterow">
+                            <td>4</td>
+                            <td>Date</td>
+                            <td><?php echo $created_date; ?></td>
+                        </tr>
+                        </tr>
+
+
+                    </table>
+
+
+
+
+                    <br>
+
+                    <!-- END FORM-->				
+                </div>
+            </div>
+            <!-- END SAMPLE FORM PORTLET-->
+        </div>
+    </div>
+</div>

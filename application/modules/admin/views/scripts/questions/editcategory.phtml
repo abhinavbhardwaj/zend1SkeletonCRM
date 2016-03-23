@@ -1,0 +1,213 @@
+<?php 
+$categoryId			= $this->categoryData['category_id'];
+$category_code			= $this->categoryData['category_code'];
+$breakCategory =  explode('.',$category_code);
+
+	$framework				= $this->categoryData['subject_name'];
+	$standard = $breakCategory[0];
+	if(strtolower($standard)=='ccss'){
+	if(strtolower($framework)=='ela-literacy.ccra'){
+		$grade					= '-';
+	}else if(strtolower($framework)=='ela-literacy'){
+		$grade = 	$breakCategory[3];
+	}else if(strtolower($framework)=='math.content'){
+		$grade = 	$breakCategory[3];
+	}
+	}else if(strtolower($standard)=='bal'){
+		$grade = 	$breakCategory[2];
+	}
+	$domain			        = $this->categoryData['code'];
+	$domainName		        = $this->categoryData['name'];
+	$subtopicCode		    = $this->categoryData['subtopic_code'];
+	$subtopicName		    = $this->categoryData['subtopic_name'];
+	$headLine			    = $this->categoryData['headline'];
+	$description			= $this->categoryData['description'];
+	if($this->categoryData['standard_id']==1){
+            $removeStdForUrl = str_replace('ccss.','',$category_code);
+            $subtopicOfUrl = $subtopicCode;
+            $n = strpos($subtopicOfUrl,'.');
+            if($n != '' && !empty($n)){
+                if(($n == 1 && $lengthSub == 3)  || $n == 2 && $lengthSub == 4){
+                    $subtopicOfUrl = substr($subtopicOfUrl, 0, $n).'.'.  strtolower(substr($subtopicOfUrl,$n+1));
+                }else{
+                    $subtopicOfUrl = substr($subtopicOfUrl, 0, $n+2).strtolower(substr($subtopicOfUrl,$n+2));
+                }
+            }else{
+                $subtopicOfUrl = substr($subtopicOfUrl, 0, 1).'.'.  strtolower(substr($subtopicOfUrl,1));
+            }
+            $categoryUrl = strtoupper($removeStdForUrl);
+            $categoryUrl = str_replace(strtoupper($subtopicCode), $subtopicOfUrl,$categoryUrl);
+            $categoryUrl = str_replace('ELA-LITERACY','ELA-Literacy',$categoryUrl);
+            $categoryUrl = str_replace('MATH.CONTENT','Math.Content',$categoryUrl);
+            $categoryUrl = str_replace('.','/',$categoryUrl);
+
+            $url                    = 'http://www.corestandards.org/'.$categoryUrl;
+            $lastChar = substr(trim($url), -1);
+            if($lastChar != '/'){
+               $url = $url.'/'; 
+            }
+	}else{
+		$url = '-';
+	}
+
+	$questCount = $this->getCategoryStatus($categoryId); 
+
+
+?>
+<!-- TinyMCE -->
+<!-- BEGIN PAGE -->  
+      <div id="body">
+         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <div id="widget-config" class="modal hide">
+            <div class="modal-header">
+               <button data-dismiss="modal" class="close" type="button">×</button>
+               <h3>Widget Settings</h3>
+            </div>
+            <div class="modal-body">
+               <p>Here will be a configuration form</p>
+            </div>
+         </div>
+         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+         <?php if(isset($this->success) && $this->success != ''){?>
+           	<div id="success" class="alert alert-success"><button class="close" data-dismiss="alert">×</button><?php echo $this->success;?></div>
+           	<?php }?>
+         <?php 
+         		if(isset($this->error) && $this->error != ''){
+         	?>		 <div id="exception" class="alert alert-error">
+         				<button class="close" data-dismiss="alert">×</button>
+         				<?php echo $this->error;?>
+         			</div>
+    		 <?php     	
+        		 }
+        	 ?>
+        
+        
+            <!-- BEGIN PAGE HEADER-->   
+            <div class="row-fluid">
+               <div class="span12">
+                      <!-- BEGIN PAGE TITLE & BREADCRUMB-->		
+					
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="<?php echo $this->url(array('controller'=>'index','action'=>'dashboard', 'module' => 'admin'), null, true);?>">Home</a> <span class="divider">/</span>
+							</li>
+							<li><a href="<?php echo $this->url(array('controller'=>'questions','action'=>'categorylist', 'module' => 'admin'), null, true);?>">Category Manager</a>
+							<span class="divider">/</span>
+							</li>
+                                                        <li><a href="#">Edit Category</a>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+               </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div id="page">
+               <div class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN SAMPLE FORM PORTLET-->	
+                     <div class="widget">
+                         <div class="widget-title">
+                           <h4>Edit Category</h4>
+                          
+                        </div>
+                        <div class="widget-body form">
+                           <!-- BEGIN FORM-->
+                            <form name="cms" id="cms" action="<?php array('controller' =>'questions', 'action' =>'editcategory', 'module' =>'admin');?>" method="post" class="form-horizontal">
+                              
+                              <table width="90%" class="tableCode" cellspacing="8" cellpadding="8">
+                   			    
+                   				  <tr>
+                   				   <td width="15%" class="Gray"><span class="error">*</span>Enter Category :</td>
+                   				   <td width="85%" colspan="3">
+                   				   			<input type="text"  class="span6 popovers" id="category" name="category"   value="<?php echo strtoupper($category_code)?>" disabled="disabled"/>
+                                 			<?php if($questCount==0){?>
+                                 			<input type ="button" class="btn btn-primary" id="checkcategorybutton" value="Edit" onClick="moveToPage('<?php echo base64_encode($categoryId)?>','questions','updatecategorycode');">
+                                 	<?php }?>
+                                 	<input type="hidden"   name="category_id"  value="<?php echo $categoryId;?>"/>
+                                 	
+                                 	</td>
+                              </tr>
+                              </table>
+                              
+                             
+                               
+                     <div id="display_categoryfileds" >          
+                             
+                             <div class="HeadingTable">
+				<span>Breakdown of <?php echo strtoupper($standard);?> Standard</span>
+				</div>
+				<table width="90%" class="tableCode" cellspacing="8" cellpadding="8">
+					<tr>
+				<td width="15%" class="Gray">Framework:</td><td width="25%"><div id="framework"><?php echo strtoupper($framework)?></div>
+				
+				</td>
+				<td width="10%" class="Gray">Grade:</td><td width="50%"><div id="grade"><?php echo $grade;?></div>
+				</td>
+				</tr>
+
+
+
+				<tr>
+				<td class="Gray">Domain Code:</td><td><div id="domain_code"><?php echo $domain?></div></td>
+				<td class="Gray" id="label_domain_name">Domain Name:</td><td><div id="domain_name"><?php echo $domainName;?></div>
+				</td>
+				
+				</tr>
+
+				<tr>
+				<td class="Gray">Sub Topic:</td><td ><span   id="sub_topic"><?php echo $subtopicCode;?></span></td>
+				<td class="Gray" id="label_domain_name">Subtopic Details :</td>
+				<td ><span id="sub_topic_name"><?php echo $subtopicName;?></span></td>
+					</tr>
+
+
+
+				<tr>
+                                    <td class="Gray">URL:</td><td><label id="createdurl"><?php $descWithoutHtml = '';
+                                    $descWithoutHtml = strip_tags($description);if(!empty($descWithoutHtml)){ ?>
+                                            <a href="<?php echo $url;?>" target="_blank"><?php echo $url;?></a><?php } ?></label>
+				</td>
+				<td class="Gray">Headline:</td>
+				<td><input type="text"  style="width: 254px;" class="span6 popovers" id="headlines" name="headlines" data-trigger="hover" placeholder="Details" value="<?php echo $headLine;?>"/>
+					</tr>
+
+
+				<tr>
+				<td colspan="4">
+				<div class=" Fwidth">
+				<textarea class="span6" rows="3" id="block1" name="category_desc"><?php echo $description;?></textarea>
+				</div>
+				</td>
+				</tr>
+				</table>
+
+
+			
+
+				<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Save</button>
+				 <button type="button" class="btn" onClick="returnPage('questions','categorylist');">Cancel</button>
+				</div>
+                             
+                             
+                             
+                               
+
+                  </div>            
+                              
+                           </form>
+                           <!-- END FORM-->				
+                        </div>
+                     </div>
+                     <!-- END SAMPLE FORM PORTLET-->
+                  </div>
+               </div>
+            </div>
+            <!-- END PAGE CONTENT-->			
+         </div>
+         <!-- END PAGE CONTAINER-->
+      </div>
+      <!-- END PAGE --> 

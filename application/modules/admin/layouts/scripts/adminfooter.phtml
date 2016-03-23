@@ -1,0 +1,24 @@
+ 
+ </div>
+ 
+ <?php
+	$this->headScript()		
+			->appendFile($this->baseUrl() . '/assets_admin/js/jquery-1.11.0.js')
+			->appendFile($this->baseUrl() . '/assets_admin/js/bootstrap.min.js')
+			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/metisMenu/metisMenu.min.js')
+			
+			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/morris/raphael.min.j')
+			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/morris/morris.min.js')
+			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/morris/morris-data.js')
+			
+			->appendFile($this->baseUrl() . '/assets_admin/js/sb-admin-2.js')
+			->appendFile($this->baseUrl() . '/assets_admin/js/validation.js') ;
+			
+    echo $this->headScript();
+?>
+    <!-- /#wrapper -->
+
+ <div id="login-copyright"><?php echo date("Y"); ?> &copy; <?php echo COPY_RIGHTS?></div>
+</body>
+
+</html>
