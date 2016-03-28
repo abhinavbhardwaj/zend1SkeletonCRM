@@ -1,10 +1,10 @@
-<?php  
-echo $this->doctype(); ?>  
-<html xmlns="http://www.w3.org/1999/xhtml"> 
+<?php
+echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!--<link rel='shortcut icon' type='image/x-icon' href = '<?php echo HOST_NAME ?>/images/fav.ico' />-->
-    <?php echo $this->headMeta(); ?> 
-    <?php echo $this->headTitle(); ?> 
+    <?php echo $this->headMeta(); ?>
+    <?php echo $this->headTitle(); ?>
     <?php
     echo $this->headLink()
      ->appendStylesheet($this->baseUrl().'/assets_admin/css/bootstrap.min.css')
@@ -13,30 +13,30 @@ echo $this->doctype(); ?>
 	 ->appendStylesheet($this->baseUrl().'/assets_admin/font-awesome-4.1.0/css/font-awesome.min.css')
 	  ->appendStylesheet($this->baseUrl().'/assets_admin/css/style.css');
 
-    ?> 
+    ?>
 </head>
 <body>
      <div class="container">
         <div class="row">
  <div id="logo" class="center">
-    <img src="<?php echo $this->baseUrl();?>/images/logo.png" alt="logo"  /> 
+    <img src="<?php echo $this->baseUrl();?>/images/ashita_logo.png" alt="logo"  />
   </div>
-	
+
 			<?php  echo $this->layout()->content; ?>
-			
+
 	    </div>
 		<div id="login-copyright"><?php echo date("Y"); ?> &copy; <?php echo COPY_RIGHTS?></div>
     </div>
-	 
+
 </body>
 <?php
-	$this->headScript()		
+	$this->headScript()
 			->appendFile($this->baseUrl() . '/assets_admin/js/jquery-1.11.0.js')
 			->appendFile($this->baseUrl() . '/assets_admin/js/bootstrap.min.js')
 			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/metisMenu/metisMenu.min.js')
 			->appendFile($this->baseUrl() . '/assets_admin/js/sb-admin-2.js')
 			->appendFile($this->baseUrl() . '/assets_admin/js/validation.js') ;
-			
+
     echo $this->headScript();
 ?>
 <!-- END BODY -->

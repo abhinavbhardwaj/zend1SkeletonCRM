@@ -1,20 +1,35 @@
- 
+
  </div>
- 
+
  <?php
-	$this->headScript()		
+ $layout =  $this->layout()->viewType;
+
+	  $this->headScript()
 			->appendFile($this->baseUrl() . '/assets_admin/js/jquery-1.11.0.js')
 			->appendFile($this->baseUrl() . '/assets_admin/js/bootstrap.min.js')
 			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/metisMenu/metisMenu.min.js')
-			
-			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/morris/raphael.min.j')
-			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/morris/morris.min.js')
-			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/morris/morris-data.js')
-			
-			->appendFile($this->baseUrl() . '/assets_admin/js/sb-admin-2.js')
-			->appendFile($this->baseUrl() . '/assets_admin/js/validation.js') ;
-			
-    echo $this->headScript();
+			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/morris/raphael.min.js');
+
+   if(!empty($layout) && ($layout == "dataTable")){//adding datatable script
+	  $this->headScript()
+			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/dataTables/jquery.dataTables.js')
+			->appendFile($this->baseUrl() . '/assets_admin/js/plugins/dataTables/dataTables.bootstrap.js');
+   }
+
+$this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/sb-admin-2.js');
+$this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/validation.js') ;
+echo $this->headScript();
+
+
+   if(!empty($layout) && ($layout == "dataTable")){//adding datatable script
+	 ?>
+	 <script>
+    $(document).ready(function() {
+        $('#dataTables').dataTable();
+    });
+    </script>
+	 <?php
+   }
 ?>
     <!-- /#wrapper -->
 

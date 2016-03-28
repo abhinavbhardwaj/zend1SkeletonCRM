@@ -34,67 +34,18 @@ $this->headLink()
         ->appendStylesheet($this->baseUrl() . '/assets_admin/font-awesome-4.1.0/css/font-awesome.min.css');
 
 
-if ($controller == 'index' && $action == 'dashboard') {
-    $this->headScript()->appendFile('https://www.google.com/jsapi');
-    $this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/my.charts.js');
-}
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <link rel='shortcut icon' type='image/x-icon' href = '<?php echo HOST_NAME ?>/images/fav.ico' />
 
-        <?php echo $this->headMeta(); ?> 
+        <?php echo $this->headMeta(); ?>
         <?php
         $actionName = str_replace(' ', '', $action);
         $controllerName = str_replace(' ', '', $controller);
-        $arrayHeadTitle = array(
-            'login' => ADMIN_LOGIN,
-            'resetpassword' => ADMIN_RESETPASS,
-            'forgotpassword' => ADMIN_FORGOTPASS,
-            'changepassword' => ADMIN_CHANGEPASS,
-            'dashboard' => ADMIN_DASHBOARD,
-            'aboutus' => ADMIN_ABOUTUS,
-            'privacypolicy' => ADMIN_PRIVACY,
-            'eula' => ADMIN_EULA,
-            'support' => ADMIN_SUPPORT,
-            'faqlist' => ADMIN_FAQLIST,
-            'faq' => '',
-            'videolist' => ADMIN_VIDEOLIST,
-            'updatevideo' => ADMIN_UPDATEVIDEO,
-            'categorylist' => ADMIN_CATELIST,
-            'viewcategorydata' => ADMIN_CATEVIEW,
-            'editcategory' => ADMIN_CATEEDIT,
-            'updatecategorycode' => ADMIN_CATEUPDATE,
-            'addcategory' => ADMIN_CATEADD,
-            'questionlist' => ADMIN_QUESLIST,
-            'expiringquestionlist' => ADMIN_EXPIRINGQUESLIST,
-            'expiredquestionlist' => ADMIN_EXPIREDQUESLIST,
-            'draftquestionlist' => ADMIN_DREAFTQUESLIST,
-            'questionlog' => ADMIN_QUESLOG,
-            'questiondetail' => ADMIN_VIEWQUES,
-            'list' => ADMIN_ADD_ADMINUSERSLIST,
-            'edit' => ADMIN_EDITADMINUSER,
-            'add' => ADMIN_ADDADMINUSER,
-            'resetpassword' => ADMIN_ADMINRESETPASS,
-            'index' => ADMIN_STATS_GRADEWISE,
-            'statslist' => ADMIN_STATS_SUBJECTWISE,
-            'personstats' => ADMIN_STATS_PERSONWISE,
-            'personstatslist' => ADMIN_STATS_PERSONANDWEEKWISE,
-            'parentlist' => ADMIN_PARENTLIST,
-            'childlist' => ADMIN_CHILDLIST_PARENTWISE
-        );
-        if ($controller != 'lclock' && $controller != 'lcquestion') {
-            foreach ($arrayHeadTitle as $key => $value) {
-                if ($key == $actionName) {
-                    $this->headTitle('Admin');
-                    $this->headTitle($value);
-                }
-            }
-        } else {
-            $this->headTitle('');
-        }
+
         echo $this->headTitle();
-        ?> 
+        ?>
 
         <script type="text/javascript">
             var base_url = '<?php echo $this->baseUrl(); ?>';
@@ -104,12 +55,12 @@ if ($controller == 'index' && $action == 'dashboard') {
         <?php echo $this->headLink(); ?>
         <?php echo $this->headScript(); ?>
 
-        
+
     </head>
 
     <!-- END HEAD -->
     <!-- BEGIN BODY -->
-   
+
 <body>
 
     <div id="wrapper">
@@ -123,7 +74,8 @@ if ($controller == 'index' && $action == 'dashboard') {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="ashita_logo.png"></a>
+                <a class="navbar-brand" href="<?php echo $this->url(array('controller' => 'index', 'action' => 'dashboard', 'module' => 'admin'), null, true); ?>">
+                    <img src="<?php echo $this->baseUrl()?>/images/ashita_logo2.png"></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -145,30 +97,7 @@ if ($controller == 'index' && $action == 'dashboard') {
                             </a>
                         </li>
                         <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
+
                         <li>
                             <a class="text-center" href="#">
                                 <strong>Read All Messages</strong>
@@ -325,10 +254,16 @@ if ($controller == 'index' && $action == 'dashboard') {
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li>
+                            <a  href="<?php echo $this->url(array('controller' => 'login', 'action' => 'changepassword', 'module' => 'admin'), null, true); ?>">
+                            <i class="fa fa-gear fa-fw"></i> Change Password
+                            </a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li>
+                           <a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'logout', 'module' => 'admin'), null, true); ?>">
+                            <i class="fa fa-sign-out fa-fw"></i>
+                            Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

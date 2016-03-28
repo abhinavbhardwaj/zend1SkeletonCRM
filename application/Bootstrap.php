@@ -10,7 +10,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $front = Zend_Controller_Front::getInstance();
         $front->setControllerDirectory(array(
             'default' => APPLICATION_PATH . '/modules/default/controllers',
-            'admin' => APPLICATION_PATH . '/modules/admin/controllers', 
+            'admin' => APPLICATION_PATH . '/modules/admin/controllers',
         ));
 
         $request = new Zend_Controller_Request_Http();
@@ -70,17 +70,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initSetupAuth()
     {
         $module = $front = Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
-        Zend_Auth::getInstance()->setStorage(new Zend_Auth_Storage_Session('finny' . APPLICATION_ENV . $module));
+        Zend_Auth::getInstance()->setStorage(new Zend_Auth_Storage_Session('CRM' . APPLICATION_ENV . $module));
     }
 
     protected function _initSetupSession()
     {
         $module = $front = Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
 
-        Zend_Session::setOptions(array('name' => 'finny.session' . APPLICATION_ENV . $module));
+        Zend_Session::setOptions(array('name' => 'CRM.session' . APPLICATION_ENV . $module));
 
         $flash = new Zend_Controller_Action_Helper_FlashMessenger();
-        $flash->setNamespace('finny.flash' . APPLICATION_ENV . $module);
+        $flash->setNamespace('CRM.flash' . APPLICATION_ENV . $module);
     }
 
     protected function _initTimezone()

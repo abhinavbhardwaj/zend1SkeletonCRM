@@ -3,7 +3,7 @@
  * @category     Admin modules
  * @package    CRM
  * @subpackage Login
- * @copyright  Copyright (c) Abhinav Bhardwaj 
+ * @copyright  Copyright (c) Abhinav Bhardwaj
  * @Library    Zend FrameWork 1.11
  * @version    CRM 1.0
  */
@@ -27,7 +27,7 @@ class Admin_LoginController extends Zend_Controller_Action {
 		parent::init ();
 		$layout = Zend_Layout::getMvcInstance (); // Create object
 		$layout->setLayout ( 'auth', true ); // set layout auth
-		$this->_tblobjectParent = new Application_Model_Parents ();
+		//$this->_tblobjectParent = new Application_Model_Parents ();
 		$this->_tblUser = new Application_Model_DbTable_UserLogin();
 		require_once (APPLICATION_PATH . '/../library/functions.php');
 	}
@@ -38,8 +38,8 @@ class Admin_LoginController extends Zend_Controller_Action {
 	 * This is action function used in login page.
 	 */
 	public function loginAction() {
-	 
-        $this->view->headTitle(ADMIN_LOGIN); 
+
+        $this->view->headTitle(ADMIN_LOGIN);
 		$adminInfoSession = new Zend_Session_Namespace ( 'adminInfo' );
 		$request = $this->getRequest ();
 		$flashMessenger = $this->_helper->getHelper ( 'FlashMessenger' );
@@ -52,18 +52,18 @@ class Admin_LoginController extends Zend_Controller_Action {
 			}
 			$flashMessages [0] = '';
 		}
-		
+
 		if (isset ( $adminInfoSession->adminData )) {
 			$this->_redirect ( 'admin/index/dashboard' );
 		}
 		if ($request->isPost ()) {
-			
+
 			$userName = $request->getPost ( 'username' );
 			$password = $request->getPost ( 'password' );
 			if (trim ( $userName ) != '' && trim ( $password ) != '') {
 				$tblUserLogin = new Application_Model_DbTable_UserLogin ();
 				$checkUserExist = $tblUserLogin->existUser ( $userName, $password );
-                                
+
 				if (empty($checkUserExist)) {
 					$this->view->errorMsg = 'User does not exist';
 					return false;
@@ -71,7 +71,7 @@ class Admin_LoginController extends Zend_Controller_Action {
                                     $this->view->errorMsg = 'Your account hasbeen deactivated by administrator';
 					return false;
                                 } else {
-					
+
 					$fetchUserData = $tblUserLogin->fetchUserdata ( $userName );
 					$adminInfoSession->adminData = $fetchUserData;
 					$this->_redirect ( 'admin/index/dashboard' );
@@ -94,7 +94,7 @@ class Admin_LoginController extends Zend_Controller_Action {
 			$this->view->message = $flashMessages [0];
 			$flashMessages [0] = '';
 		}
-		
+
 		$request = $this->getRequest ();
 		$auth = Zend_Auth::getInstance ();
 		$email = "";
@@ -113,7 +113,7 @@ class Admin_LoginController extends Zend_Controller_Action {
 						if(!empty($userInfo['image'])){
 							$adminImage = AWS_S3_URL.'admin/'.$userInfo['image'];
 						}
-						
+
 						$expiryDate = expiryData(1); // call function to get expiry date after one day
 						$createdDate = todayZendDate(); // Call function for get today date
 						$chnagePassRqstData = array(
@@ -122,9 +122,9 @@ class Admin_LoginController extends Zend_Controller_Action {
 								'created_date' => $createdDate,
 								'expiry_date' => $expiryDate
 						);
-						$addrequest = $this->_tblobjectParent->changeParentPassword($chnagePassRqstData); // call function to add change password data
+						//$addrequest = $this->_tblobjectParent->changeParentPassword($chnagePassRqstData); // call function to add change password data
 						$url = $this->view->serverUrl().HOST_NAME . '/admin/login/resetpassword/userId/' . base64_encode($userId) . '/changecode/' . $chnagePasscode;
-						
+
 						/*                         * ****************sending mail using my lib class******** */
 						$mail = new My_Mail();
 						$mail->setSubject('Retrieve Forgot Password');
@@ -134,7 +134,7 @@ class Admin_LoginController extends Zend_Controller_Action {
 						$template->assign('reset_link', $url);
 						 $template->assign('profile_picture', $adminImage);
 						$html = $template->render('forgot.phtml');
-						
+
 						$mail->setBodyHtml($html);
 						$mail->addTo($email);
 						$response = $mail->send();
@@ -167,7 +167,7 @@ class Admin_LoginController extends Zend_Controller_Action {
 						}
 						}else{
 							$this->view->errorMsg = 'Your account hasbeen deactivated by administrator';
-						}	
+						}
 					} else {
 						$this->view->errorMsg = 'Email address does not exist';
 						//$this->_redirect ( 'admin/login/login' );
@@ -181,7 +181,7 @@ class Admin_LoginController extends Zend_Controller_Action {
 		}
 		$this->view->email = $email;
 	}
-	
+
 public function resetpasswordAction(){
         $this->view->headTitle(ADMIN_RESETPASS);
 	// $this->_helper->layout()->setLayout('loginlayout');
@@ -193,14 +193,14 @@ public function resetpasswordAction(){
 		$message = '';
 		if (!$request->isPost()) {
 			$verficationCode = $request->getParam('changecode');
-	
+
 			/*                 * **************block to check about link********************* */
-	
+
 			if (empty($verficationCode)) {
 				$message = "Request code does not exist";
 			}
 			$fetchRequestData = $this->_tblobjectParent->checkChangePasswordEmailVerify($verficationCode, $userId);
-	
+
 			if (empty($fetchRequestData)) {
 				$message = "Request does not exist";
 			} else {
@@ -217,7 +217,7 @@ public function resetpasswordAction(){
 					$message = 'Link has already been used. Make a new request.';
 				} // end if
 			}
-	
+
 			/**
 			 * **********************Block to verify the code with the particular parent ***************************
 			 */
@@ -239,18 +239,18 @@ public function resetpasswordAction(){
 			}if(!empty($verficationCode) && !empty($userId)){
 				$fetchRequestData = $this->_tblobjectParent->checkChangePasswordEmailVerify($verficationCode, $userId);
 			}
-	
+
 			if (empty($fetchRequestData)) {
 				$message = "Request does not exist";
 			} else {
 				$verified = $fetchRequestData->used;
 				$todayDate = todayZendDate();
 				$expiryDate = $fetchRequestData->expiry_date;
-	
+
 				$urlExipryDate = strtotime(formatDate($expiryDate, 1)); // case 1 for date formate like "Y-m-d H:i:s"
 				$hours = getHours($todayDate);
-	
-	
+
+
 				if (strtotime($expiryDate) <= strtotime($todayDate)) { // check verify expired or not
 					// check coupon expired or not
 					$message = 'Link is expired. Make a new request.';
@@ -259,7 +259,7 @@ public function resetpasswordAction(){
 					$message = 'Link has already been used. Make a new request.';
 				} // end if
 			}
-	
+
 			/**
 			 * **********************Block to verify the code with the particular parent ***************************
 			 */
@@ -286,12 +286,12 @@ public function resetpasswordAction(){
 		$this->view->userId = $userId;
 		$this->view->verficationCode = $verficationCode;
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	/*
 	 * function logout from the admin
 	 */
@@ -319,7 +319,7 @@ public function resetpasswordAction(){
 			if ($password == md5 ( $oldPassword )) {
 				$newPasswordEncr = md5 ( $newPassword );
 				$data = array (
-						'password' => $newPasswordEncr 
+						'password' => $newPasswordEncr
 				);
 				$tblUserLogin->updateAdmin ( $data, $userId );
 				//$this->view->success = 'Your password has been changed successfully';
@@ -331,4 +331,4 @@ public function resetpasswordAction(){
 			}
 		}
 	}
-}  
+}

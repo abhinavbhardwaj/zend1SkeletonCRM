@@ -54,9 +54,10 @@ class My_Controller_Plugin_CheckAuthentication extends Zend_Controller_Plugin_Ab
             $userInfo = Zend_Auth::getInstance()->getIdentity();
 
             $dbParent = new Application_Model_Parents();
-            $parId = (int) $dbParent->getParentData($userInfo->user_id, 'parId');
+            $parId = $dbParent->getParentData($userInfo->user_id, 'parId');
 
-            if (empty($parId) && ($parId !== 0)) {
+            //if (empty($parId) && ($parId !== 0)) {
+            if ($parId === false) {                
                 $request->setControllerName('auth');
                 $request->setActionName('logout');
                 return TRUE;
