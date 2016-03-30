@@ -22,15 +22,16 @@ class Admin_ReceiptController extends Zend_Controller_Action {
     public function purchaseOrderAction(){
 
         $this->view->headTitle(ADMIN_PURCHASE_ORDER);
+        Zend_Layout::getMvcInstance()->assign('viewType', 'dateTime');//Telling Layout the we need datatable here
         $clientTbl                      =       new Application_Model_DbTable_Clients();
         $productTbl                     =       new Application_Model_DbTable_Products();
 
         $this->view->header             =       "Purchase order";
         //getting client List
-        $clients                        =       $clientTbl->getAllActiveClients();
+        $this->view->clients            =       $clientTbl->getAllActiveClients();
         $this->view->product            =       $productTbl->getAllProduct();
         $this->view->postData           =       array(); //default value for each field
-  
+
         $request                        =       $this->getRequest();
 
         if($request->isPost()){
