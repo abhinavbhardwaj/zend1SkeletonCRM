@@ -20,12 +20,15 @@ class Admin_ProductController extends Zend_Controller_Action {
      */
     public function addAction(){
         $this->view->headTitle(ADMIN_ADD_PRODUCT);
-
+        $clientTbl                      =       new Application_Model_DbTable_Clients();
         $this->view->header             =       "Add Products";
         $this->view->productName        =       NULL;
         $this->view->productUnit        =       NULL;
+        $this->view->client             =       NULL;
+        $this->view->productPrice       =       NULL;
         $this->view->productStock       =       NULL;
         $this->view->defaultUnits       =       array("Litre","Kg", "Bottel");
+        $this->view->clients            =       $clientTbl->getAllActiveClients();
 
         $this->_helper->viewRenderer('product/form', null, true);
         $request                        =       $this->getRequest();
@@ -35,6 +38,8 @@ class Admin_ProductController extends Zend_Controller_Action {
         $this->view->productName        =       $postData['name'];
         $this->view->productUnit        =       $postData['unit'];
         $this->view->productStock       =       $postData['stock'];
+        $this->view->client             =       $postData['client_id'];
+        $this->view->productPrice       =       $postData['price'];
 
         $tblProduct                     =       new Application_Model_DbTable_Products();
         $postData                       =       $request->getPost();

@@ -60,7 +60,7 @@ $adminInfoSession = new Zend_Session_Namespace('adminInfo');
                                                 <option value="">Select country</option>
 
 												<?php foreach($this->country  as $country):
-												    $DefaultCountry =	(!empty($this->postData['country'])) ? $this->postData['country'] : "IN";
+												    $DefaultCountry =	(!empty($this->postData['country'])) ? $this->postData['country'] : "94";
                                                     $selected       =   ($DefaultCountry == $country['id']) ? "selected= selected" : "";
                                                     echo "<option value='".$country[id]."' $selected >
 													$country[country]</option>";

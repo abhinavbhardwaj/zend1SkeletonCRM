@@ -1,4 +1,6 @@
-
+<?php
+$adminInfoSession = new Zend_Session_Namespace('adminInfo');
+?>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -125,9 +127,11 @@
 
                                         $unit           =   "unit           = '$product[unit]'";
                                         $stock          =   "stock          = '$product[stock]'";
+										$price          =   "price          = '$product[price]'";
 
 
-                                        echo "<option $unit $stock value='".$product[id]."' $selected >$product[name]</option>";
+
+                                        echo "<option $unit $stock $price value='".$product[id]."' $selected >$product[name]</option>";
                                     endforeach;?>
 
                                   </select>
@@ -150,7 +154,7 @@
 								</div>
 
 								<div class="col-xs-2 rate text-left">
-									<input type="number" name="rate" required="true"  min="1" class="form-control rate" style="width: 60%; float: left;" placeholder="50">
+									<input type="number" name="rate" required="true" readonly="readonly" min="1" class="form-control unit_price" style="width: 60%; float: left;" placeholder="50">
                                     <span class="unit_rate" style="line-height:2"></span>
 								</div>
 								<div class="col-xs-3 rate text-right">
@@ -177,62 +181,70 @@
 
 
 					</div>
-				</div>
 
-				<div class="footer">
-					<div class="total text-left">
-						<div class="col-md-12">
+			<div class="payment-info">
+            <div class="row">
+                <div class="col-sm-6">
 
-							<div class="col-md-6">
-						Date of Delivery
-						<div class='input-group date' id='datetimepicker1'>
-												<input type='text' class="form-control" />
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-						For
-						 <div class="checkbox">
-    <label>
-      <input type="checkbox"> Our Godown
-    </label>
-	<label>
-      <input type="checkbox"> Your Godown
-    </label>
-  </div>
+                    <div class="form-group">
+                                <label> Date of Delivery </label>
+
+                        <div class='input-group date' id='datetimepicker2'>
+							<input type='text' class="form-control" required="true" name="delivery_date"  required="true" />
+							<span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+							</span>
 						</div>
-								<div class="col-md-6">
-						Payment Term
-						<div class='input-group date' id='datetimepicker1'>
-												<input type='text' class="form-control" />
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-						Other Conditions
-						<input class="form-control" type="text" >
+                    </div>
+                </div>
+
+		<div class="col-sm-6">
+            <div class="form-group" style="margin-left: 15%;">
+			<label>For</label>
+                <div class="checkbox">
+							<label>
+							  <input type="radio"  name="order_for" id="order_for" value="Our Godown"> Our Godown
+							</label>
+							<label>
+							  <input type="radio" name="order_for" checked="checked" id="order_for" value="Your Godown"> Your Godown
+							</label>
+				</div>
+            </div>
+		</div>
 						</div>
 
+			 <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="form-group">
+                                <label>  Payment Term  </label>
+
+                        <textarea class="form-control" placeholer="Payment Term" rows="6" name="term"></textarea>
+
+                    </div>
+                </div>
+
+		 <div class="col-sm-12">
+
+                    <div class="form-group">
+                                <label>  Other Conditions   </label>
+
+                        <textarea class="form-control" placeholer="Other Conditions" rows="6" name="condition"></textarea>
+
+                    </div>
+                </div>
 						</div>
-						</div>
-				<div style="padding-top:30px;" class="col-md-6 text-left">
-				Supplier's Signature
-				</div>
-				<div style="padding-top:30px;" class="col-md-6 text-right" >
-				Authorised Signatory
-				</div>
-				<div class="col-md-12">
-					Please Provide original P.O. with bill. After Delivery date goods will be accapted after reasonable discount
 					</div>
+
 				</div>
+
+
 				<div class="col-lg-12 text-center">
 						<div class="print">
-							<a href="#">
-								<i class="fa fa-print"></i>
-								Print this receipt
-							</a>
+							<input type="hidden" class="form-control" name="added_by" value="<?php echo $adminInfoSession->adminData['admin_user_id']?>">
+							 <button class="btn btn-default" type="submit">Placed Order</button>
 						</div>
-						</div>
+				</div>
 
 
             </div>

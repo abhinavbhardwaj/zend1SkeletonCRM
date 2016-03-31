@@ -34,6 +34,21 @@ $adminInfoSession = new Zend_Session_Namespace('adminInfo');
                                             <input class="form-control" type="text" required="required" name="name" id="name" placeholder="Product Name" value="<?php echo $this->productName?>">
                                             <p class="help-block">Add Products From Here</p>
                                         </div>
+
+
+										<div class="form-group">
+                                            <label>Client</label>
+                                            <select class="form-control selectClient" required="required" name="client_id" id="client_id">
+												 <option value="">Select One</option>
+
+												<?php foreach($this->clients  as $clients):
+													$selected       =   ($this->client == $clients['id']) ? "selected= selected" : "";
+													echo "<option value='".$clients[id]."' $selected >$clients[name]</option>";
+												endforeach;?>
+
+									        </select>
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Unit Name</label>
                                             <select class="form-control" required="required" name="unit" id="unit">
@@ -46,6 +61,12 @@ $adminInfoSession = new Zend_Session_Namespace('adminInfo');
 
 											  </select>
                                         </div>
+
+										<div class="form-group">
+                                            <label>Price</label>
+                                            <input class="form-control" type="number" placeholder="Product Price" min="1" name="price" id="price" value="<?php echo $this->productPrice?>">
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Product Stock</label>
                                             <input class="form-control" type="number" placeholder="Product Stock" name="stock" id="stock" value="<?php echo $this->productStock?>">

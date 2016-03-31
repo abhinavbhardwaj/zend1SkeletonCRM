@@ -1,0 +1,262 @@
+<?php
+$adminInfoSession = new Zend_Session_Namespace('adminInfo');
+?>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"><?php echo $this->header?></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+           <div class="row">
+
+<div class="receipt-content">
+    <div class="container bootstrap snippet">
+		<form role="form" action="" method="post"  enctype="multipart/form-data">
+		<div class="row">
+
+			<div class="col-lg-12">
+				<div class="invoice-wrapper">
+					<div class="intro">
+						<div class="col-md-2">
+						<div class="img">
+						<img src="<?php echo $this->baseUrl()?>/images/ashita_logo.png" alt="Ashita Export" />
+						</div>
+						</div>
+						<div class="col-md-10">
+						<center><?php echo $this->header?></center>
+						<h1><center><?php echo $this->companyName ?></center></h1>
+
+						<center><strong>Supplier Of:</strong> <?php echo $this->supplierOf ?></center>
+
+						<center><?php echo $this->companyAddress ?></center>
+						<center>Ph:- <?php echo $this->companyPhone ?></center>
+						<center>TIN:- <?php echo $this->companyTin ?></center>
+						</div>
+					</div>
+
+					<div class="payment-info">
+						<div class="row">
+							<div class="col-sm-6">
+
+								  <div class="form-group">
+                                            <label>Vat Challan No.</label>
+                                            <strong><input class="form-control" readonly="readonly" value="<?php echo $this->challanNo?>"></strong>
+                                        </div>
+							</div>
+							<div class="col-sm-6 text-right">
+
+
+
+
+
+            <div class="form-group">
+			<label>Payment Date</label>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control"  name="payment_date" required="true"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+
+					<div class="payment-details">
+						<div class="row">
+							<div class="col-sm-6">
+								<span>Client</span>
+								 <form role="form">
+								    <div class="form-group">
+
+                                            <input type="text" readonly="readonly" class="form-control" value="<?php echo $this->purchaseOrder['client_name']  ?>">
+											<input type="hidden" class="form-control" name="client_id" value="<?php echo $this->purchaseOrder['client_id']  ?>">
+                                        </div>
+
+									 <div class="form-group">
+
+                                            <p>
+												<input type="text" readonly="readonly" class="form-control" value="<?php echo $this->purchaseOrder['client_address']  ?>">
+											</p>
+											 <p>
+												<input type="text" readonly="readonly" class="form-control" value="<?php echo $this->purchaseOrder['client_zip']  ?>">
+											 </p>
+                                        </div>
+
+
+								</form>
+							</div>
+							<div class="col-sm-6 text-left">
+							 <form role="form">
+												<div class="col-sm-6 text-left">
+
+													<div class="form-group">
+													<p>Order No.<input class="form-control" name="order_no" readonly="readonly" value="<?php echo $this->purchaseOrder['id']  ?>"></p>
+												  </div>
+
+												  <div class="form-group">
+													<p>Bill No..<input class="form-control" name="bill_no" required="true"></p>
+												  </div>
+
+
+
+													</div>
+
+
+												<div class="col-sm-6 text-left">
+												 <div class="form-group">
+																   Date.
+											 <input class="form-control" name="po_date" readonly="readonly" value="<?php echo $this->purchaseOrder['payment_date']  ?>">
+											</div>
+
+													 <div class="form-group">
+																   Date.<div class='input-group date' name="bill_date"  id='datetimepicker2'>
+												<input type='text' class="form-control" />
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+											</div>
+											</div>
+
+
+
+
+										</form>
+										</div>
+
+
+
+								</div>
+
+
+							</div>
+						</div>
+
+
+					<div class="line-items">
+						<div class="headers clearfix">
+							<div class="row">
+							<div class="col-xs-1">S.No.</div>
+								<div class="col-xs-4">Description</div>
+								<div class="col-xs-3">Packing</div>
+
+								<div class="col-xs-4 text-right">Required Quantity</div>
+							</div>
+						</div>
+						<div class="items">
+						<form role="form">
+							<div class="row item">
+								<div class="col-xs-1 desc">
+									1
+								</div>
+								<div class="col-xs-4 qty">
+									<div class="form-group">
+                              <input type="text" class="form-control" readonly="readonly" value="<?php echo $this->purchaseOrder['product_name']  ?>">
+							  <input type="hidden" name="product_id" class="form-control" value="<?php echo $this->purchaseOrder['product_id']  ?>">
+
+							  </div>
+
+								</div>
+
+								<div class="col-xs-3 pack">
+									<div class="form-group">
+                              <input type="number" class="form-control"  name="quantity" style="width: 60%; float: left;" required="true" placeholder="50">
+							  <span class="unit_rate" style="line-height:2"> <?php echo $this->purchaseOrder['unit']  ?></span>
+
+							  </div>
+								</div>
+
+								<div class="col-xs-4 pack">
+									<div class="form-group">
+                             <input type="text" class="form-control" readonly="readonly" value="<?php echo $this->purchaseOrder['ordered_quentity'].' ' .$this->purchaseOrder['unit']  ?>">
+							  </div>
+								</div>
+
+
+							</div>
+
+
+
+
+							</form>
+						</div>
+						<div class="total text-right">
+							<p class="extra-notes">
+								<strong>Terms & Conditions</strong>
+								1. Subject to Jaipur Jurisdiction Only.<br>
+								2. No Claim for shortage or breakage will be entertained after the delivery of Goods.<br>
+								3. Interest @20% p.a. will be charged extra on the total invoice amount if not paid to due date.
+							<strong>This is an industrial thinner to be used for industrial purpose<br>
+							We are not responsible for any missuse.</strong><br>
+							</p>
+
+							<div class="field">
+								Subtotal <span> <input type="number" name="sub_total"></span>
+							</div>
+							<div class="field">
+								VAT 4% <span> <input type="number" name="vat"></span>
+							</div>
+							<div class="field">
+								Shipping <span> <input type="number" name="shipping"></span>
+							</div>
+							<div class="field">
+								Discount <span> <input type="number" name="discount"></span>
+							</div>
+							<div class="field ">
+								Total <span> <input type="number" required="true" name="total"></span>
+							</div>
+
+
+						</div>
+						<!--<div class="total text-left">
+						<div class="col-md-12">
+						<p>
+						<strong>Amount In words</strong> One thousand five hundred two only
+						</p>
+						</div>
+						</div>-->
+
+
+					</div>
+				</div>
+
+				<div class="footer">
+				<div class="col-md-6 text-left">
+				Receiver's Signature
+				</div>
+				<div class="col-md-6 text-right" >
+				Authorised Signatory
+				</div>
+				<div class="col-md-12">
+					Copyright © 2016. Ashita Chemicals
+					</div>
+				</div>
+				<div class="col-lg-12 text-center">
+						<div class="print">
+							<a href="#">
+								<i class="fa fa-print"></i>
+								Print this receipt
+							</a>
+						</div>
+						</div>
+			</div>
+
+		</div>
+		</form>
+	</div>
+</div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->

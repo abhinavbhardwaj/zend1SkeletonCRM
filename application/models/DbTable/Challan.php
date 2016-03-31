@@ -4,16 +4,16 @@
  * Created By Abhinav Bhardwaj
  *
  */
-class Application_Model_DbTable_PurchaseOrder extends Zend_Db_Table_Abstract
+class Application_Model_DbTable_Challan extends Zend_Db_Table_Abstract
 {
 	// This is name of Table
-	protected $_name = 'bal_purchase_order';
+	protected $_name = 'bal_challan';
 
 
 
 
 	//function to add categories
-	public function addPurchaseOrder($data)
+	public function addChallan($data)
 	{
 
 		$insertId 		= $this->insert($data);
@@ -39,8 +39,7 @@ class Application_Model_DbTable_PurchaseOrder extends Zend_Db_Table_Abstract
 										)
 									->joinLeft(array('pro' => 'bal_products'),
 										'pro.id = op.product_id',
-										array("product_id"=>"pro.id",
-											  "product_name"=>"pro.name",
+										array("product_name"=>"pro.name",
 											  "unit"=>"pro.unit"
 											  )
 										)
@@ -61,39 +60,17 @@ class Application_Model_DbTable_PurchaseOrder extends Zend_Db_Table_Abstract
       return $poInfo;
 	}
 
-
 	/**
-	 *Function to get All Product
+	 *Function to get challan number
+	 *Here we are just taking higest chalan id from challan table
 	 */
-	public function getAllPurchaseOrder(){
+	public function getChallanNo(){
 		$db 				= 		Zend_Db_Table::getDefaultAdapter();
-		$select 			= 		$db->select()
-									->from(array('po' => $this->_name),
-										   array("id"=>"po.id",
-											  "status"=>"po.status"
-											  )
-										   )
-									->joinLeft(array('op' => 'bal_ordered_product'),
-										'op.po_id = po.id',
-										array("ordered_quentity"=>"op.ordered_quentity",
-											  "amount"=>"op.amount"
-											  )
-										)
-									->joinLeft(array('pro' => 'bal_products'),
-										'pro.id = op.product_id',
-										array("product_name"=>"pro.name",
-											  "unit"=>"pro.unit"
-											  )
-										)
-									->joinLeft(array('cli' => 'bal_clients'),
-										'cli.id = po.client_id',
-										array(
-											  "client_name"=>"cli.name"
-											  )
-										)
-									->order("po.created_date desc");
-		$poInfo 			=  		$db->fetchAll($select);
-		return $poInfo;
+		$select 			= 		$db->select()->from($this->_name, array(new Zend_Db_Expr("MAX(id) AS maxID")));
+
+		$maxId				=		((int)$db->fetchOne($select)+1);
+		 
+		return $maxId;
 	}
 
 	//function to update categories Data

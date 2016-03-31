@@ -38,8 +38,27 @@ function validateLogin(){
 function closeThisError(id){
 	$('#'+id).css("display","none");
 }
+/*
+ *function to prin specific div
+ */
+function printThisPage(divId) {
+     $("#"+divId).print();
+}
+
 
 $(function() {
+         $(document.body).on('click',".print",function (e) {
+                        var divContents = $("#print-div").html();
+                        var printWindow = window.open('', '', 'height=1000,width=900');
+                        printWindow.document.write('<html><body >');
+                        printWindow.document.write(divContents);
+                        printWindow.document.write('</body></html>');
+                        printWindow.document.close();
+                        printWindow.print();
+
+               // $("#print-div").printThis(); 
+        });
+
         $(document.body).on('change',".selectClient",function (e) {
         $(".client-details").hide();
         var element     =       $(this).find('option:selected');
@@ -62,11 +81,13 @@ $(function() {
         var element     =       $(this).find('option:selected');
         var unit        =       element.attr("unit");
         var stock       =       element.attr("stock");
+        var price       =       element.attr("price");
 
         if(typeof stock != "undefined"){ //no errors
           // $(".client-details").show();
            $(".stock").val(stock);
            $(".unit").html(" "+unit);
+           $(".unit_price").val(price);
            $(".unit_rate").html("/"+unit);
         }
 
@@ -75,20 +96,9 @@ $(function() {
         $(document.body).on('change',".ordered_quentity",function (e) {
        // $(".client-details").hide();
         var quentity            =       $(this).val();
-        var rate                =       $(".rate").val();
+        var rate                =       $(".unit_price").val();
 
         if(( quentity != "")&&( rate != "")){ //no errors
-          var total = (quentity)*(rate);
-           $(".TotalAmount").val(total.toFixed(2));
-                }
-
-        });
-       $(document.body).on('change',".rate",function (e) {
-       // $(".client-details").hide();
-        var rate                =       $(this).val();
-        var quentity            =       $(".ordered_quentity").val();
-
-       if(( quentity != "")&&( rate != "")){ //no errors
           var total = (quentity)*(rate);
            $(".TotalAmount").val(total.toFixed(2));
                 }

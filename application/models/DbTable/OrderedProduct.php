@@ -7,18 +7,18 @@
 class Application_Model_DbTable_OrderedProduct extends Zend_Db_Table_Abstract
 {
 	// This is name of Table
-	protected $_name = 'ordered_product';
+	protected $_name = 'bal_ordered_product';
 
 
 
 
 	//function to add categories
-	public function addProduct($data)
+	public function addOrderedProduct($data)
 	{
 
-		$options 		= $this->insert($data);
+		$insertId 		= $this->insert($data);
 
-		return $options;
+		return $insertId;
 
 	}
 

@@ -25,6 +25,7 @@
 
 $this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/sb-admin-2.js');
 $this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/validation.js') ;
+//$this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/plugins/print/printThis.js') ;
 
 echo $this->headScript();
 
@@ -44,6 +45,12 @@ echo $this->headScript();
 	  <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
+				  daysOfWeekDisabled: [0, 6]
+				  });
+            });
+
+            $(function () {
+                $('#datetimepicker2').datetimepicker({
 				  daysOfWeekDisabled: [0, 6]
 				  });
             });

@@ -26,9 +26,15 @@ class Application_Model_DbTable_Products extends Zend_Db_Table_Abstract
 	 *Function to get All Product
 	 */
 	public function getAllProduct(){
-		$where	 			= 		"1";
-		$order 				= 		"created_date desc";
-		return $this->fetchAll($where,$order)->toArray();
+		$db 				= 		Zend_Db_Table::getDefaultAdapter();
+		$select 			= 		$db->select()
+									->from(array('prd' => $this->_name), "prd.*")
+									->joinLeft(array('clt' => 'bal_clients'),
+										'prd.client_id = clt.id',
+										array("client"=>"clt.name"))
+									->order("prd.created_date desc");
+		$productInfo 		=  		$db->fetchAll($select);
+      return $productInfo; 
 	}
 
 	//function to update categories Data

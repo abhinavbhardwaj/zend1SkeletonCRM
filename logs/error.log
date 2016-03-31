@@ -1181,3 +1181,354 @@ Array
 
 -----------------------------------------------------------
 
+2016-03-30T11:58:07-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'CRM.ordered_product' doesn't exist' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('DESCRIBE `order...', Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Mysql.php(169): Zend_Db_Adapter_Pdo_Abstract->query('DESCRIBE `order...')
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(835): Zend_Db_Adapter_Pdo_Mysql->describeTable('ordered_product', NULL)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(874): Zend_Db_Table_Abstract->_setupMetadata()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(1033): Zend_Db_Table_Abstract->_setupPrimaryKey()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/OrderedProduct.php(19): Zend_Db_Table_Abstract->insert(Array)
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(63): Application_Model_DbTable_OrderedProduct->addOrderedProduct(Array)
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->purchaseOrderAction()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('purchaseOrderAc...')
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#13 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#14 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#15 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#16 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'CRM.ordered_product' doesn't exist' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('DESCRIBE `order...', Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Mysql.php(169): Zend_Db_Adapter_Pdo_Abstract->query('DESCRIBE `order...')
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(835): Zend_Db_Adapter_Pdo_Mysql->describeTable('ordered_product', NULL)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(874): Zend_Db_Table_Abstract->_setupMetadata()
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(1033): Zend_Db_Table_Abstract->_setupPrimaryKey()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/OrderedProduct.php(19): Zend_Db_Table_Abstract->insert(Array)
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(63): Application_Model_DbTable_OrderedProduct->addOrderedProduct(Array)
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->purchaseOrderAction()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('purchaseOrderAc...')
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#13 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#14 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#15 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => purchase-order
+    [client_id] => 1
+    [payment_date] => 04/04/2016 12:00 AM
+    [product_id] => 4
+    [ordered_quentity] => 400
+    [rate] => 80
+    [remark] => we want 30 kg per month
+    [amount] => 32000.00
+    [delivery_date] => 03/08/2016 12:00 AM
+    [order_for] => Your Godown
+    [term] => As i said I need 60
+    [condition] => No condition ash klro
+    [added_by] => 1
+)
+
+-----------------------------------------------------------
+
+2016-03-30T14:04:30-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'po.id, po.status' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/PurchaseOrder.php(90): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(115): Application_Model_DbTable_PurchaseOrder->getAllPurchaseOrder()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->allPurchaseOrderAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('allPurchaseOrde...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#13 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'po.id, po.status' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/PurchaseOrder.php(90): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(115): Application_Model_DbTable_PurchaseOrder->getAllPurchaseOrder()
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->allPurchaseOrderAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('allPurchaseOrde...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#12 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => all-purchase-order
+)
+
+-----------------------------------------------------------
+
+2016-03-30T14:04:39-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'po.id, po.status' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/PurchaseOrder.php(90): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(115): Application_Model_DbTable_PurchaseOrder->getAllPurchaseOrder()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->allPurchaseOrderAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('allPurchaseOrde...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#13 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'po.id, po.status' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/PurchaseOrder.php(90): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(115): Application_Model_DbTable_PurchaseOrder->getAllPurchaseOrder()
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->allPurchaseOrderAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('allPurchaseOrde...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#12 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => all-purchase-order
+)
+
+-----------------------------------------------------------
+
+2016-03-30T15:21:03-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(827): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchOne(NULL)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#13 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(827): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchOne(NULL)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#12 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => create-challan
+    [orderId] => 1
+)
+
+-----------------------------------------------------------
+
+2016-03-30T15:21:25-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(827): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchOne(NULL)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#13 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(827): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchOne(NULL)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#12 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => create-challan
+    [orderId] => 1
+)
+
+-----------------------------------------------------------
+
+2016-03-30T15:21:27-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(827): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchOne(NULL)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#13 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(827): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchOne(NULL)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#12 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => create-challan
+    [orderId] => 1
+)
+
+-----------------------------------------------------------
+
+2016-03-30T15:21:41-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(827): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchOne(NULL)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#13 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(827): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchOne(NULL)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#12 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => create-challan
+    [orderId] => 1
+)
+
+-----------------------------------------------------------
+
+2016-03-30T15:22:23-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(755): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchRow(NULL)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#13 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(NULL, Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(755): Zend_Db_Adapter_Pdo_Abstract->query(NULL, Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Challan.php(70): Zend_Db_Adapter_Abstract->fetchRow(NULL)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(47): Application_Model_DbTable_Challan->getChallanNo()
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createChallanAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createChallanAc...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#12 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => create-challan
+    [orderId] => 1
+)
+
+-----------------------------------------------------------
+
