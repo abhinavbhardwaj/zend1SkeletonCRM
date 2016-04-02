@@ -1,7 +1,10 @@
 
  </div>
-
+<script>
+   var BASE_URL		=	'<?php echo $this->baseUrl();?>';
+</script>
  <?php
+
  $layout =  $this->layout()->viewType;
 
 	  $this->headScript()
@@ -22,9 +25,9 @@
 	  ->appendFile($this->baseUrl() . '/assets_admin/js/plugins/dateTime/bootstrap-datetimepicker.js');
    }
 
-
+$this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/plugins/number/toword.js');
 $this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/sb-admin-2.js');
-$this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/validation.js') ;
+$this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/custom.js') ;
 //$this->headScript()->appendFile($this->baseUrl() . '/assets_admin/js/plugins/print/printThis.js') ;
 
 echo $this->headScript();

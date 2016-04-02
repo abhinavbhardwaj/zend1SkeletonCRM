@@ -38,26 +38,44 @@ function validateLogin(){
 function closeThisError(id){
 	$('#'+id).css("display","none");
 }
+
 /*
  *function to prin specific div
  */
-function printThisPage(divId) {
-     $("#"+divId).print();
-}
-
-
-$(function() {
-         $(document.body).on('click',".print",function (e) {
+function printThisPage() {
+        //converting input field into text
+                        $("#saveForm input").each(function() {
+                            var val = $(this).val();
+                            $(this).replaceWith(val);
+                        });
+                        $("#saveForm select").each(function() {
+                            var val = $(this).val();
+                            $(this).replaceWith(val);
+                        });
                         var divContents = $("#print-div").html();
                         var printWindow = window.open('', '', 'height=1000,width=900');
-                        printWindow.document.write('<html><body >');
+                        printWindow.document.write('<html><head>');
+                        printWindow.document.write('<link rel="stylesheet" type="text/css" href="'+BASE_URL+'/assets_admin/css/bootstrap.min.css"/>');
+                        printWindow.document.write('</head><body >');
                         printWindow.document.write(divContents);
                         printWindow.document.write('</body></html>');
                         printWindow.document.close();
                         printWindow.print();
+}
 
-               // $("#print-div").printThis(); 
+
+
+
+$(function() {
+        $(document.body).on('click',".print",function (e) {
+                        printThisPage();
         });
+
+        //$(document.body).on('click',".saveANDprint",function (e) {
+        //                $("#saveForm").submit();
+        //               // printThisPage();
+        //
+        //});
 
         $(document.body).on('change',".selectClient",function (e) {
         $(".client-details").hide();
@@ -102,6 +120,39 @@ $(function() {
           var total = (quentity)*(rate);
            $(".TotalAmount").val(total.toFixed(2));
                 }
+
+        });
+
+//Jquery function for challan page
+        $(document.body).on('change',".quantity",function (e) {
+        $(".AmountInWords").hide();// by default this dive will be hidden
+        var quentity            =       $(this).val();
+        var rate                =       $(".productRate").val();
+        var vat                 =       $(".vat").attr("vat");
+        var shipping            =       $(".shipping").attr("shipping");
+        var discount            =       $(".discount").attr("discount");
+
+        if(( quentity != "")&&( rate != "")){
+          var subTotal          =       parseFloat((quentity)*(rate));//calculate subtotle
+          var vatTotal          =       parseFloat((subTotal)*(vat)/100);//calculate Vat
+          var shippingTotal     =       parseFloat(shipping);//calculate Vat
+          var discountTotal     =       parseFloat((subTotal)*(discount)/100);//calculate discount
+          var  Total            =       parseFloat(((subTotal+shippingTotal+vatTotal)) - (discountTotal) );//calculate The total amount
+
+          var TotalInWords      =       toWords(Total);
+
+           $(".sub_total").val(subTotal.toFixed(2)); //show subtotal
+           $(".vat").val(vatTotal.toFixed(2));//Show vat
+           $(".shipping").val(shippingTotal);//Show shipping
+           $(".discount").val(discountTotal.toFixed(2));//Show Discount
+           $(".total").val(Total);//Show Discount
+           if (Total > 0) {
+            $(".AmountInWords").show();
+            $(".AmountInWords").html("<strong>Amount In words</strong>  " + TotalInWords + "only");//Show Amount in words
+           }
+
+
+         }
 
         });
 

@@ -31,6 +31,11 @@ class Admin_ReceiptController extends Zend_Controller_Action {
         $this->view->companyAddress     =       ADMIN_COMPANY_ADDRESS;
         $this->view->companyPhone       =       ADMIN_COMPANY_PHONE;
         $this->view->companyTin         =       ADMIN_COMPANY_TIN;
+
+        $this->view->vat                =       VAT;
+        $this->view->shipping           =       SHIPPING;
+        $this->view->discount           =       DISCOUNT;
+
         $request                        =       $this->getRequest();
         $POid                           =       $request->getParam('orderId');
 
@@ -46,8 +51,10 @@ class Admin_ReceiptController extends Zend_Controller_Action {
         $this->view->purchaseOrder      =       $purchaseOrder[0];
         $this->view->challanNo          =       $tblchallan->getChallanNo();
         if($request->isPost()){
+
         $tblPO                          =       new Application_Model_DbTable_PurchaseOrder();
         $postData                       =       $request->getPost();
+        prd($postData);
         $this->view->postData           =       $postData;
         $POdata['server_ip']            =       $_SERVER['REMOTE_ADDR'];
         //first we add this into purchase order
