@@ -1,0 +1,177 @@
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP Notice:  Undefined index: bill_date in /var/www/html/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php on line 55
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:05:50 America/Los_Angeles] PHP   7. Admin_ReceiptController->createChallanAction() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:516
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP Notice:  Undefined index: bill_date in /var/www/html/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php on line 55
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:13:06 America/Los_Angeles] PHP   7. Admin_ReceiptController->createChallanAction() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:516
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP Notice:  Undefined index: bill_date in /var/www/html/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php on line 55
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:13:54 America/Los_Angeles] PHP   7. Admin_ReceiptController->createChallanAction() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:516
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Notice:  Use of undefined constant id - assumed 'id' in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/purchase-order.phtml on line 49
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Notice:  Use of undefined constant id - assumed 'id' in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/purchase-order.phtml on line 49
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Notice:  Use of undefined constant id - assumed 'id' in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/purchase-order.phtml on line 134
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Notice:  Use of undefined constant id - assumed 'id' in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/purchase-order.phtml on line 134
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Notice:  Use of undefined constant id - assumed 'id' in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/purchase-order.phtml on line 134
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Notice:  Use of undefined constant id - assumed 'id' in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/purchase-order.phtml on line 134
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Notice:  Use of undefined constant id - assumed 'id' in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/purchase-order.phtml on line 134
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 05:48:19 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP Notice:  Undefined index: rate in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/print-challan.phtml on line 160
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP Notice:  Undefined index: amountInWords in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/print-challan.phtml on line 219
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 06:37:46 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP Notice:  Undefined index: amountInWords in /var/www/html/zend1SkeletonCRM/application/modules/admin/views/scripts/receipt/print-challan.phtml on line 219
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP Stack trace:
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   1. {main}() /var/www/html/zend1SkeletonCRM/public/index.php:0
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   2. Zend_Application->run() /var/www/html/zend1SkeletonCRM/public/index.php:34
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() /var/www/html/zend1SkeletonCRM/library/Zend/Application.php:366
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   4. Zend_Controller_Front->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php:97
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   5. Zend_Controller_Dispatcher_Standard->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php:954
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   6. Zend_Controller_Action->dispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php:295
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   7. Zend_Controller_Action_HelperBroker->notifyPostDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php:527
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   8. Zend_Controller_Action_Helper_ViewRenderer->postDispatch() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/HelperBroker.php:277
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP   9. Zend_Controller_Action_Helper_ViewRenderer->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:960
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP  10. Zend_Controller_Action_Helper_ViewRenderer->renderScript() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:921
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP  11. Zend_View_Abstract->render() /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action/Helper/ViewRenderer.php:900
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP  12. Zend_View->_run() /var/www/html/zend1SkeletonCRM/library/Zend/View/Abstract.php:888
+[02-Apr-2016 06:39:19 America/Los_Angeles] PHP  13. include() /var/www/html/zend1SkeletonCRM/library/Zend/View.php:108

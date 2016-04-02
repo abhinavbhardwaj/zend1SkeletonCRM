@@ -30,7 +30,9 @@ class Application_Model_DbTable_PurchaseOrder extends Zend_Db_Table_Abstract
 									->from(array('po' => $this->_name), "po.*")
 									->joinLeft(array('op' => 'bal_ordered_product'),
 										'op.po_id = po.id',
-										array("ordered_quentity"=>"op.ordered_quentity",
+										array(
+											 "order_product_id"=>"op.id",
+											  "ordered_quentity"=>"op.ordered_quentity",
 											  "given_quentity"=>"op.given_quentity",
 											  "rate"=>"op.rate",
 											  "amount"=>"op.amount",
@@ -96,11 +98,11 @@ class Application_Model_DbTable_PurchaseOrder extends Zend_Db_Table_Abstract
 		return $poInfo;
 	}
 
-	//function to update categories Data
-	public function updatetrophyData($trophyDataArray,$trophy_id)
+	//function to update   Data
+	public function updateData($dataArray,$id)
 	{
-		$where = $this->_db->quoteInto("trophy_id 	=?",$trophy_id);
-		$updateCatData 		= $this->update($trophyDataArray,$where);
+		$where = $this->_db->quoteInto("id 	=?", $id);
+		$updateCatData 		= $this->update($dataArray,$where);
 		return $updateCatData;
 	}
 

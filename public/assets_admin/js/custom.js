@@ -43,15 +43,7 @@ function closeThisError(id){
  *function to prin specific div
  */
 function printThisPage() {
-        //converting input field into text
-                        $("#saveForm input").each(function() {
-                            var val = $(this).val();
-                            $(this).replaceWith(val);
-                        });
-                        $("#saveForm select").each(function() {
-                            var val = $(this).val();
-                            $(this).replaceWith(val);
-                        });
+ 
                         var divContents = $("#print-div").html();
                         var printWindow = window.open('', '', 'height=1000,width=900');
                         printWindow.document.write('<html><head>');
@@ -71,11 +63,6 @@ $(function() {
                         printThisPage();
         });
 
-        //$(document.body).on('click',".saveANDprint",function (e) {
-        //                $("#saveForm").submit();
-        //               // printThisPage();
-        //
-        //});
 
         $(document.body).on('change',".selectClient",function (e) {
         $(".client-details").hide();
@@ -148,7 +135,8 @@ $(function() {
            $(".total").val(Total);//Show Discount
            if (Total > 0) {
             $(".AmountInWords").show();
-            $(".AmountInWords").html("<strong>Amount In words</strong>  " + TotalInWords + "only");//Show Amount in words
+            $(".AmountInWords").html("<strong>Amount In words:</strong>  " + TotalInWords + "only");//Show Amount in words
+            $(".totalInWords").val(TotalInWords);//Show Amount in words
            }
 
 

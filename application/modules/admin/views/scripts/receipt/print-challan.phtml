@@ -1,7 +1,5 @@
-<?php 
-$adminInfoSession 		= 		new Zend_Session_Namespace('adminInfo');
-$remaning_quentity		= 		(int)($this->purchaseOrder['ordered_quentity'] - $this->purchaseOrder['given_quentity']);
-$remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;	 
+<?php
+ $challan  =  $this->challan[0];  
 ?>
         <div id="page-wrapper">
             <div class="row">
@@ -44,7 +42,7 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 
 								  <div class="form-group">
                                             <label>Vat Challan No.</label>
-                                            <strong><input class="form-control" readonly="readonly" value="<?php echo $this->challanNo?>"></strong>
+                                            <strong><input class="form-control" readonly="readonly" value="<?php echo $challan['id']?>"></strong>
                                         </div>
 							</div>
 							<div class="col-sm-6 text-right">
@@ -55,20 +53,10 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 
             <div class="form-group">
 			<label>Payment Date</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control"  name="payment_date" required="true"/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                <div class='input-group' style="margin-left: 66%;">
+                    <input type='text' class="form-control" readonly="readonly" value="<?php echo date("m-d-Y", strtotime($challan['payment_date']))?>"/>                     
                 </div>
             </div>
-
-
-
-
-
-
-
 
 
 							</div>
@@ -81,17 +69,15 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 								<span>Client</span>
 								    <div class="form-group">
 
-                                            <input type="text" readonly="readonly" class="form-control" value="<?php echo $this->purchaseOrder['client_name']  ?>">
-											<input type="hidden" class="form-control" name="client_id" value="<?php echo $this->purchaseOrder['client_id']  ?>">
-                                        </div>
+                                            <input type="text" readonly="readonly" class="form-control" value="<?php echo $challan['client_name']  ?>">  </div>
 
 									 <div class="form-group">
 
                                             <p>
-												<input type="text" readonly="readonly" class="form-control" value="<?php echo $this->purchaseOrder['client_address']  ?>">
+												<input type="text" readonly="readonly" class="form-control" value="<?php echo $challan['client_address']  ?>">
 											</p>
 											 <p>
-												<input type="text" readonly="readonly" class="form-control" value="<?php echo $this->purchaseOrder['client_zip']  ?>">
+												<input type="text" readonly="readonly" class="form-control" value="<?php echo $challan['client_zip']  ?>">
 											 </p>
                                         </div>
 
@@ -101,11 +87,11 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 												<div class="col-sm-6 text-left">
 
 													<div class="form-group">
-													<p>Order No.<input class="form-control" name="order_no" readonly="readonly" value="<?php echo $this->purchaseOrder['id']  ?>"></p>
+													<p>Order No.<input class="form-control"  readonly="readonly" value="<?php echo $challan['order_no']  ?>"></p>
 												  </div>
 
 												  <div class="form-group">
-													<p>Bill No.<input class="form-control" name="bill_no" required="true"></p>
+													<p>Bill No.<input class="form-control"  readonly="readonly" value="<?php echo $challan['bill_no']  ?>"></p>
 												  </div>
 
 
@@ -116,18 +102,15 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 												<div class="col-sm-6 text-left">
 												 <div class="form-group">
 																   Date
-											 <input class="form-control" name="po_date" readonly="readonly"
-													value="<?php echo date("m/d/Y H:i A", strtotime($this->purchaseOrder['payment_date']))  ?>">
-											</div>
+											 <input class="form-control"  readonly="readonly"
+													value="<?php echo date("m-d-Y", strtotime($challan['payment_date']))  ?>">
+												</div>
 
-													 <div class="form-group">
-																   Datess<div class='input-group date'   id='datetimepicker2'>
-												<input type='text' class="form-control" name="bill_date"  />
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-											</div>
+											 <div class="form-group">
+																   Date
+												<input class="form-control"  readonly="readonly"
+													value="<?php echo date("m-d-Y", strtotime($challan['bill_date']))  ?>">
+												</div>
 
 
 
@@ -149,7 +132,7 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 								<div class="col-xs-3">Description</div>
 								<div class="col-xs-3">Packing</div>
 								<div class="col-xs-3">Rate</div>
-								<div class="col-xs-2 text-right" title="This is a remaning quantity which has to be provided">Required Quantity</div>
+								<div class="col-xs-2 text-right">Required Quantity</div>
 							</div>
 						</div>
 						<div class="items">
@@ -160,35 +143,30 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 								</div>
 						<div class="col-xs-3 qty">
 							<div class="form-group">
-								<input type="text" class="form-control" readonly="readonly" value="<?php echo $this->purchaseOrder['product_name']  ?>">
-								<input type="hidden" name="product_id" class="form-control" value="<?php echo $this->purchaseOrder['product_id']  ?>">
-								<input type="hidden" name="order_product_id" class="form-control" value="<?php echo $this->purchaseOrder['order_product_id']  ?>">
-								
-
+								<input type="text" class="form-control" readonly="readonly" value="<?php echo $challan['product_name']  ?>">
 							</div>
 						</div>
 
 						<div class="col-xs-3 pack">
 							<div class="form-group">
-								<input type="number" class="form-control quantity"  name="quantity" style="width: 60%; float: left;" required="true" placeholder="50" min="1" max="<?php echo $remaning_quentity?>">
-								<span class="unit_rate" style="line-height:2"> <?php echo $this->purchaseOrder['unit']  ?></span>
+							<input type="text" class="form-control" readonly="readonly" style="width: 60%; float: left;" value="<?php echo $challan['quantity']  ?>">
+							<span class="unit_rate" style="line-height:2"> <?php echo $challan['unit']  ?></span>
 
 						  </div>
 						</div>
 
 						<div class="col-xs-3 pack">
 							<div class="form-group">
-								<input type="number" class="form-control productRate" readonly="readonly" style="width: 60%; float: left;" required="true" value="<?php echo $this->purchaseOrder['rate']  ?>">
-								<span class="unit_rate" style="line-height:2"> /<?php echo $this->purchaseOrder['unit']  ?></span>
+								<input type="text" class="form-control" readonly="readonly" style="width: 60%; float: left;" value="<?php echo $challan['rate']  ?>">
+								<span class="unit_rate" style="line-height:2"> /<?php echo $challan['unit']  ?></span>
 
 						  </div>
 						</div>
 
 
-								<div class="col-xs-2 pack" title="This is a remaning quantity which has to be provided">
+								<div class="col-xs-2 pack">
 									<div class="form-group">
-                             <input type="text" class="form-control" readonly="readonly" value="<?php
-							 echo  $remaning_quentity.' ' .$this->purchaseOrder['unit']  ?>">
+                             <input type="text" class="form-control" readonly="readonly" value="<?php echo ($challan['given_quentity']-$challan['quantity']).' ' .$challan['unit']  ?>">
 							  </div>
 								</div>
 
@@ -208,28 +186,28 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 							</p>
 
 							<div class="field">
-								Subtotal <span> <input type="number" class="sub_total" readonly="readonly" name="sub_total"></span>
+								Subtotal <span> <input type="number"  value="<?php echo $challan['sub_total']?>" readonly="readonly" name="sub_total"></span>
 							</div>
 							<div class="field">
 								VAT <?php echo  ($this->vat > 0) ? "(".$this->vat."%)" : ""?>
 								<span>
-									<input type="number" readonly="readonly" class="vat" value="0" vat="<?php echo $this->vat?>" name="vat">
+									<input type="number" readonly="readonly" value="<?php echo $challan['vat']?>"   name="vat">
 								</span>
 							</div>
 							<div class="field">
 								Shipping
 								<span>
-									<input type="number" value="0" class="shipping" readonly="readonly" shipping="<?php echo $this->shipping?>" name="shipping">
+									<input type="number" readonly="readonly"  value="<?php echo $challan['shipping']?>"  >
 								</span>
 							</div>
 							<div class="field">
 								Discount <?php echo  ($this->discount > 0) ? "(".$this->discount."%)" : ""?>
 								<span>
-									<input type="number" value="0" class="discount" readonly="readonly" discount="<?php echo $this->discount?>" name="discount">
+									<input type="number"  value="<?php echo $challan['discount']?>" readonly="readonly"  >
 								</span>
 							</div>
 							<div class="field ">
-								Total <span> <input type="number"  class="total" readonly="readonly" required="true" name="total"></span>
+								Total <span> <input type="number" value="<?php echo $challan['total']?>" readonly="readonly" required="true"  ></span>
 							</div>
 
 
@@ -237,11 +215,9 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 
 						<div class="total text-left">
 							<div class="col-md-12">
-								<p class="AmountInWords" style="display: none">
-									<strong>Amount In words</strong>
-									
+								<p >
+									<strong>Amount In words:</strong> <?php echo $challan['totalInWords']?>
 								</p>
-								<input type="hidden"  class="totalInWords" readonly="readonly"  name="totalInWords">
 							</div>
 						</div>
 
@@ -263,9 +239,11 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 			</div>
 
 			<div class="col-lg-12 text-center">
-						<div class="prints">
-									<input type="hidden" class="form-control" name="added_by" value="<?php echo $adminInfoSession->adminData['admin_user_id']?>">
-									<button class="btn btn-default" type="submit">Create challan</button>
+						<div class="print">
+							<a href="#">
+								<i class="fa fa-print"></i>
+								Print this receipt
+							</a>
 						</div>
 
 			</div>

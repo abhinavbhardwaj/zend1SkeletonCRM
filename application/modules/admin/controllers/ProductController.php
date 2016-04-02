@@ -44,6 +44,7 @@ class Admin_ProductController extends Zend_Controller_Action {
         $tblProduct                     =       new Application_Model_DbTable_Products();
         $postData                       =       $request->getPost();
         $postData['server_ip']          =       $_SERVER['REMOTE_ADDR'];
+        $postData['created_date']       =       date("Y-m-d H:i:s");
 
         $addProduct                     =       $tblProduct->addProduct($postData);
         if($addProduct){

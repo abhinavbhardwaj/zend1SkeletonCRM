@@ -39,6 +39,7 @@ class Admin_ClientController extends Zend_Controller_Action {
         $postData                       =       $request->getPost();
         $this->view->postData           =       $postData;
         $postData['server_ip']          =       $_SERVER['REMOTE_ADDR'];
+        $postData['created_date']       =       date("Y-m-d H:i:s");
 
         $addProduct                     =       $tblClient->addClient($postData);
         if($addProduct){

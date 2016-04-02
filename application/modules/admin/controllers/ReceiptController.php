@@ -14,6 +14,11 @@ class Admin_ReceiptController extends Zend_Controller_Action {
         $layout = Zend_Layout::getMvcInstance(); //Create object
         $layout->setLayout('admin', true); //set layout admin
         require_once APPLICATION_PATH . '/../library/functions.php';
+        $flashMessages                  =       $this->_helper->flashMessenger->getMessages(); //set flash message for all template
+                
+        if (is_array($flashMessages) && !empty($flashMessages)) { 
+            $this->view->success        = $flashMessages[0];
+        }
     }
 
 
@@ -23,8 +28,7 @@ class Admin_ReceiptController extends Zend_Controller_Action {
     public function createChallanAction(){
 
         $this->view->headTitle(ADMIN_PURCHASE_ORDER);
-        Zend_Layout::getMvcInstance()->assign('viewType', 'dateTime');//Telling Layout the we need datatable here
-
+        Zend_Layout::getMvcInstance()->assign('viewType', 'dateTime');//Telling Layout the we need datatable here 
         $this->view->header             =       "VAT CHALLAN";
         $this->view->companyName        =       ADMIN_COMPANY_NAME ;
         $this->view->supplierOf         =       ADMIN_SUPPLIER_OF;
@@ -39,44 +43,60 @@ class Admin_ReceiptController extends Zend_Controller_Action {
         $request                        =       $this->getRequest();
         $POid                           =       $request->getParam('orderId');
 
-        if (is_array($flashMessages) && !empty($flashMessages)) {
-            $this->view->success        = $flashMessages[0];
-        }
         //get All product List
         $tblPO                          =       new Application_Model_DbTable_PurchaseOrder();
         $tblchallan                     =       new Application_Model_DbTable_Challan();
         $purchaseOrder                  =       $tblPO->getpurchaseOrderById($POid);
-
-//prd($purchaseOrder[0]);
+ //prd($purchaseOrder);
         $this->view->purchaseOrder      =       $purchaseOrder[0];
         $this->view->challanNo          =       $tblchallan->getChallanNo();
-        if($request->isPost()){
+        
+        if($request->isPost()){ 
+            $ChData                     =       $request->getPost(); 
+            $this->view->postData       =       $ChData; //challan data 
+            $ChData['payment_date']     =       date("Y-m-d H:i:s", strtotime($ChData['payment_date']));
+            $ChData['po_date']          =       date("Y-m-d H:i:s", strtotime($ChData['po_date']));
+            $ChData['bill_date']        =       date("Y-m-d H:i:s", strtotime($ChData['bill_date']));
+            $ChData['created_date']     =       date("Y-m-d H:i:s");      
+            
+            //first we need to create chalan 
+             $addChallan                =       $tblchallan->insert($ChData);
+        
+            
 
-        $tblPO                          =       new Application_Model_DbTable_PurchaseOrder();
-        $postData                       =       $request->getPost();
-        prd($postData);
-        $this->view->postData           =       $postData;
-        $POdata['server_ip']            =       $_SERVER['REMOTE_ADDR'];
-        //first we add this into purchase order
-
-        $addPOentry                     =       $tblPO->addPurchaseOrder($POdata);
-
-        if($addPOentry > 0){
-            //insert related entry into ordered product table
-            $tblOrderProduct            =       new Application_Model_DbTable_OrderedProduct();
-
-
-
-            $addPOentry                 =       $tblOrderProduct->addOrderedProduct($OPdata);
-//delete that much amout of quentity from the product table --To be done
-
+        if($addChallan > 0){
+            
+            //we also need Order Product module
+            $tblOP                      =       new Application_Model_DbTable_OrderedProduct();
+            
+            
+            $Opdata['given_quentity']   =       (int)($ChData['quantity']+$purchaseOrder[0]['given_quentity']); //Order product data setup
+           
+            //Set Purchase order
+            $remaningQuentity           =       ((int) $purchaseOrder[0]['ordered_quentity'] - $Opdata['given_quentity']);
+            
+            if($remaningQuentity == $purchaseOrder[0]['ordered_quentity'] ) //nothing has been chnaged so order is still open
+                $status                 =        "open";
+            else if($remaningQuentity == 0 ) //Nothing has been remaning so lets complete this
+                $status                 =        "complete";
+            else    
+                $status                 =        "in-progress";
+            
+            $pOdata['status']           =       $status;//Purchase order status
+            
+            $tblOP->updateData($Opdata, $ChData['order_product_id']);//update Ordered product quentity
+            $tblPO->updateData($pOdata, $ChData['order_no']);//update purchase order status
+            
             $this->_helper->flashMessenger->addMessage('Order added successfully');
-            $this->_redirect('/admin/receipt/print-purchase-order/orderId/'.$addPOentry);
+            $this->_redirect('/admin/receipt/print-challan/challanId/'.$addChallan);
         }
         else{
             $this->_helper->flashMessenger->addMessage('Some Error occur please try again!');
-            $this->_redirect('/admin/client/add');
+            $this->_redirect('/admin/receipt/all-purchase-order');
         }
+        
+
+        
         }
     }
    /**
@@ -111,6 +131,7 @@ class Admin_ReceiptController extends Zend_Controller_Action {
         $POdata['condition']            =       $postData['condition'];
         $POdata['order_for']            =       $postData['order_for'];
         $POdata['added_by']             =       $postData['added_by'];
+        $POdata['created_date']         =       date("Y-m-d H:i:s");
 
         $addPOentry                     =       $tblPO->addPurchaseOrder($POdata);
 
@@ -134,25 +155,22 @@ class Admin_ReceiptController extends Zend_Controller_Action {
         }
         else{
             $this->_helper->flashMessenger->addMessage('Some Error occur please try again!');
-            $this->_redirect('/admin/client/add');
+            $this->_redirect('/admin/receipt/all-purchase-order');
         }
         }
     }
 
 
     /**
-     *Function to Show all product
+     *Function to Show Purchase order detail to take a print out
      */
     public function printPurchaseOrderAction(){
         $this->view->headTitle(ADMIN_CLIENT_LIST);
-        $this->view->header             =       "Purchase order";
-        $flashMessages                  =       $this->_helper->flashMessenger->getMessages();
+        $this->view->header             =       "Purchase order"; 
         $request                        =       $this->getRequest();
         $POid                           =       $request->getParam('orderId');
 
-        if (is_array($flashMessages) && !empty($flashMessages)) {
-            $this->view->success        = $flashMessages[0];
-        }
+      
         //get All product List
         $tblPO                          =       new Application_Model_DbTable_PurchaseOrder();
         $purchaseOrder                  =       $tblPO->getpurchaseOrderById($POid);
@@ -162,17 +180,40 @@ class Admin_ReceiptController extends Zend_Controller_Action {
     }
 
     /**
+     *Function to Show Purchase order detail to take a print out
+     */
+    public function printChallanAction(){
+        $this->view->headTitle(ADMIN_CLIENT_LIST);
+        $this->view->header             =       "VAT CHALLAN";
+        $this->view->companyName        =       ADMIN_COMPANY_NAME ;
+        $this->view->supplierOf         =       ADMIN_SUPPLIER_OF;
+        $this->view->companyAddress     =       ADMIN_COMPANY_ADDRESS;
+        $this->view->companyPhone       =       ADMIN_COMPANY_PHONE;
+        $this->view->companyTin         =       ADMIN_COMPANY_TIN;
+
+        $this->view->vat                =       VAT;
+        $this->view->shipping           =       SHIPPING;
+        $this->view->discount           =       DISCOUNT;
+
+        $request                        =       $this->getRequest();
+        $chId                           =       $request->getParam('challanId');
+
+     
+        //get All product List
+        $tblCh                          =       new Application_Model_DbTable_Challan();
+        $challan                        =       $tblCh->getChallanById($chId); 
+        $this->view->challan            =       $challan;
+    }    
+
+    /**
      *Function to Show all product
      */
     public function allPurchaseOrderAction(){
         $this->view->headTitle(ADMIN_CLIENT_LIST);
         $this->view->header             =       "View All Purchase Order";
         Zend_Layout::getMvcInstance()->assign('viewType', 'dataTable');//Telling Layout the we need datatable here
-        $flashMessages                  =       $this->_helper->flashMessenger->getMessages();
 
-        if (is_array($flashMessages) && !empty($flashMessages)) {
-            $this->view->success        = $flashMessages[0];
-        }
+    
         //get All product List
         $tblPO                          =       new Application_Model_DbTable_PurchaseOrder();
         $purchaseOrder                  =       $tblPO->getAllPurchaseOrder();

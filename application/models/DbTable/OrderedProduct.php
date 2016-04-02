@@ -31,11 +31,11 @@ class Application_Model_DbTable_OrderedProduct extends Zend_Db_Table_Abstract
 		return $this->fetchAll($where,$order)->toArray();
 	}
 
-	//function to update categories Data
-	public function updatetrophyData($trophyDataArray,$trophy_id)
+	//function to update   Data
+	public function updateData($dataArray,$id)
 	{
-		$where = $this->_db->quoteInto("trophy_id 	=?",$trophy_id);
-		$updateCatData 		= $this->update($trophyDataArray,$where);
+		$where = $this->_db->quoteInto("id 	=?", $id);
+		$updateCatData 		= $this->update($dataArray,$where);
 		return $updateCatData;
 	}
 
