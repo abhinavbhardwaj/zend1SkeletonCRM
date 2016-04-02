@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 30, 2016 at 06:04 AM
+-- Generation Time: Apr 02, 2016 at 06:21 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -50,6 +50,33 @@ INSERT INTO `bal_admin_users` (`admin_user_id`, `name`, `username`, `password`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bal_challan`
+--
+
+CREATE TABLE IF NOT EXISTS `bal_challan` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `payment_date` datetime NOT NULL,
+  `client_id` int(50) NOT NULL,
+  `order_no` int(50) NOT NULL COMMENT 'This is Purchase order id',
+  `po_date` datetime NOT NULL COMMENT 'purchase order date',
+  `bill_no` varchar(50) NOT NULL,
+  `bill_date` datetime NOT NULL,
+  `product_id` int(50) NOT NULL COMMENT 'this is that product id from product table whish has been ordered',
+  `quantity` int(50) NOT NULL COMMENT 'currently how much product we are going to give',
+  `sub_total` decimal(10,2) NOT NULL,
+  `vat` decimal(10,2) NOT NULL COMMENT 'its a constant ',
+  `shipping` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `discount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `total` decimal(10,2) NOT NULL,
+  `added_by` int(11) NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `bal_clients`
 --
 
@@ -69,14 +96,15 @@ CREATE TABLE IF NOT EXISTS `bal_clients` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `bal_clients`
 --
 
 INSERT INTO `bal_clients` (`id`, `name`, `address`, `company_name`, `phone`, `city`, `state`, `country`, `zip`, `status`, `added_by`, `server_ip`, `created_date`, `modified_date`) VALUES
-(1, 'SPICY DESIGNS', 'J-52, Sitapura Industrial Area', 'SPICY DESIGNS', '2771025', 'Jaipur', 'Rajasthan', 94, '302022', 't', 1, '127.0.0.1', '2016-03-27 09:06:34', '0000-00-00 00:00:00');
+(1, 'SPICY DESIGNS', 'J-52, Sitapura Industrial Area', 'SPICY DESIGNS', '2771025', 'Jaipur', 'Rajasthan', 94, '302022', 't', 1, '127.0.0.1', '2016-03-27 09:06:34', '0000-00-00 00:00:00'),
+(2, 'Ashita Chemicals', 'J-52, Sitapura Industrial Area', 'Ashita Chemicals', '9205658989', 'Jaipur', 'Rajasthan', 94, '302022', 't', 1, '127.0.0.1', '2016-03-30 16:52:30', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -347,6 +375,34 @@ CREATE TABLE IF NOT EXISTS `bal_images` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bal_ordered_product`
+--
+
+CREATE TABLE IF NOT EXISTS `bal_ordered_product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `po_id` bigint(100) NOT NULL COMMENT 'This is Purchase order id from purchase order table',
+  `product_id` int(11) NOT NULL COMMENT 'this is product id from product table',
+  `ordered_quentity` int(50) NOT NULL,
+  `given_quentity` int(50) NOT NULL DEFAULT '0',
+  `rate` int(11) NOT NULL,
+  `amount` int(50) NOT NULL,
+  `remark` text NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `bal_ordered_product`
+--
+
+INSERT INTO `bal_ordered_product` (`id`, `po_id`, `product_id`, `ordered_quentity`, `given_quentity`, `rate`, `amount`, `remark`, `created_date`, `modified_date`) VALUES
+(1, 1, 1, 100, 0, 50, 5000, 'we want 30 kg per month', '2016-03-30 19:06:07', '0000-00-00 00:00:00'),
+(2, 2, 5, 200, 0, 50, 10000, 'we want 30 kg per month', '2016-03-30 19:07:48', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `bal_pages`
 --
 
@@ -403,23 +459,26 @@ CREATE TABLE IF NOT EXISTS `bal_products` (
   `name` varchar(50) NOT NULL,
   `unit` varchar(50) NOT NULL,
   `stock` int(11) NOT NULL,
+  `client_id` int(50) NOT NULL,
+  `price` int(50) NOT NULL,
   `status` enum('t','f') NOT NULL DEFAULT 't',
   `added_by` int(11) NOT NULL,
   `server_ip` varchar(50) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `bal_products`
 --
 
-INSERT INTO `bal_products` (`id`, `name`, `unit`, `stock`, `status`, `added_by`, `server_ip`, `created_date`, `modified_date`) VALUES
-(1, 'Synthetic Thinner(N.C)', 'Litre', 300, 't', 1, '127.0.0.1', '2016-03-26 19:48:47', '2016-03-26 19:48:47'),
-(2, 'Industrial Thinner(N.D)', 'Litre', 500, 't', 1, '127.0.0.1', '2016-03-26 20:39:53', '0000-00-00 00:00:00'),
-(3, 'Chemical N.C', 'Kg', 0, 't', 1, '127.0.0.1', '2016-03-26 20:50:08', '0000-00-00 00:00:00'),
-(4, 'Chemical Avily.', 'Kg', 500, 't', 1, '127.0.0.1', '2016-03-27 14:05:17', '0000-00-00 00:00:00');
+INSERT INTO `bal_products` (`id`, `name`, `unit`, `stock`, `client_id`, `price`, `status`, `added_by`, `server_ip`, `created_date`, `modified_date`) VALUES
+(1, 'Synthetic Thinner(N.C)', 'Litre', 300, 2, 50, 't', 1, '127.0.0.1', '2016-03-30 16:55:42', '2016-03-30 16:55:42'),
+(2, 'Industrial Thinner(N.D)', 'Litre', 500, 2, 50, 't', 1, '127.0.0.1', '2016-03-30 16:55:38', '2016-03-30 16:55:38'),
+(3, 'Chemical N.C', 'Kg', 400, 2, 50, 't', 1, '127.0.0.1', '2016-03-30 16:55:34', '2016-03-30 16:55:34'),
+(4, 'Chemical Avily.', 'Kg', 500, 2, 80, 't', 1, '127.0.0.1', '2016-03-30 16:55:48', '2016-03-30 16:55:48'),
+(5, 'Rung Cat', 'Litre', 500, 2, 50, 't', 1, '127.0.0.1', '2016-03-30 16:53:19', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -441,7 +500,21 @@ CREATE TABLE IF NOT EXISTS `bal_purchase_order` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `bal_purchase_order`
+--
+
+INSERT INTO `bal_purchase_order` (`id`, `client_id`, `payment_date`, `delivery_date`, `term`, `condition`, `order_for`, `status`, `added_by`, `server_ip`, `created_date`, `modified_date`) VALUES
+(1, 1, '2016-04-04 16:00:00', '2016-04-12 07:00:00', 'No Terms are avalaible', 'No conditian just chill dude', 'Your Godown', 'open', 1, '127.0.0.1', '2016-03-30 19:06:07', '0000-00-00 00:00:00'),
+(2, 1, '2016-03-31 07:00:00', '2016-03-31 07:00:00', 'No specific terms', 'No conditions maje kr yara tu bhi ', 'Your Godown', 'open', 1, '127.0.0.1', '2016-03-30 19:07:47', '0000-00-00 00:00:00'),
+(3, 0, '2016-04-01 20:02:41', '0000-00-00 00:00:00', '', '', '', 'open', 0, '127.0.0.1', '2016-04-01 20:02:41', '0000-00-00 00:00:00'),
+(4, 0, '2016-04-01 20:03:09', '0000-00-00 00:00:00', '', '', '', 'open', 0, '127.0.0.1', '2016-04-01 20:03:09', '0000-00-00 00:00:00'),
+(5, 0, '2016-04-01 20:05:55', '0000-00-00 00:00:00', '', '', '', 'open', 0, '127.0.0.1', '2016-04-01 20:05:55', '0000-00-00 00:00:00'),
+(6, 0, '2016-04-01 20:10:34', '0000-00-00 00:00:00', '', '', '', 'open', 0, '127.0.0.1', '2016-04-01 20:10:34', '0000-00-00 00:00:00'),
+(7, 0, '2016-04-01 20:11:12', '0000-00-00 00:00:00', '', '', '', 'open', 0, '127.0.0.1', '2016-04-01 20:11:12', '0000-00-00 00:00:00'),
+(8, 0, '2016-04-01 20:19:23', '0000-00-00 00:00:00', '', '', '', 'open', 0, '127.0.0.1', '2016-04-01 20:19:23', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -468,26 +541,6 @@ INSERT INTO `bal_timezone` (`timezone_id`, `title`, `value_php`, `value_mysql`) 
 (4, 'Mountain (UTC -7:00)', 'America/Denver', '-7:00'),
 (5, 'Central (UTC -6:00)', 'America/Chicago', '-6:00'),
 (6, 'Eastern (UTC -5:00)', 'America/New_York', '-5:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ordered_product`
---
-
-CREATE TABLE IF NOT EXISTS `ordered_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `po_id` bigint(100) NOT NULL COMMENT 'This is Purchase order id from purchase order table',
-  `product_id` int(11) NOT NULL COMMENT 'this is product id from product table',
-  `ordered_quentity` int(50) NOT NULL,
-  `given_quentity` int(50) NOT NULL DEFAULT '0',
-  `rate` int(11) NOT NULL,
-  `amount` int(50) NOT NULL,
-  `remark` text NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
