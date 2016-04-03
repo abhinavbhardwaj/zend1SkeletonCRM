@@ -52,18 +52,45 @@
                                             <td><?php echo $data['product_name'] ?></td>
                                             <td><?php echo $data['ordered_quentity'].''.$data['unit'] ?></td>
                                             <td class="center"><?php echo $data['amount'] ?></td>
-                                            <td class="center"><?php echo $data['status'] ?></td>
                                             <td class="center">
-                                            <a href="<?php echo $this->url(array('controller' => 'receipt', 'action' => 'print-purchase-order', 'module' => 'admin', 'orderId' => $data['id']), null, true); ?> " class="btn btn-info">
-                                                <span > Print</span>
-                                            </a>
-                                            <a href="<?php echo $this->url(array('controller' => 'receipt', 'action' => 'create-challan', 'module' => 'admin', 'orderId' => $data['id']), null, true); ?> " class="btn btn-info">
-                                                <span >Challan</span>
-                                            </a>
-                                            <a href="<?php echo $this->url(array('controller' => 'receipt', 'action' => 'create-invoice', 'module' => 'admin', 'orderId' => $data['id']), null, true); ?> " class="btn btn-info">
-                                               <span >Invoice</span>
-                                            </a>
+                                                       <?php
+                                                                  echo getStatusButton($data['status']);
+                                                       ?>
                                             </td>
+           <td class="center">
+
+                      <a href="<?php echo $this->url(array('controller' => 'receipt', 'action' => 'print-purchase-order', 'module' => 'admin', 'orderId' => $data['id']), null, true); ?> " class="btn btn-sm btn-primary">
+                          <span > Print</span>
+                      </a>
+
+                      <?php
+                      if(($data['status']=="open")||($data['status']=="in-progress")){
+                        $ChallanUrl =  $this->url(array('controller' => 'receipt', 'action' => 'create-challan', 'module' => 'admin', 'orderId' => $data['id']), null, true);
+                        $btn        =   "btn-info";
+                      }
+                      else{
+                        $ChallanUrl =  "javascript:void(0);";
+                        $btn        =   "btn-success";
+                      }
+                      ?>
+                     <a href="<?php echo $ChallanUrl ?> " class="btn btn-sm <?=$btn?>">
+                         <span >Challan</span>
+                     </a>
+
+                      <?php
+                      if($data['status']=="complete"){
+                        $InvoiceUrl =  $this->url(array('controller' => 'receipt', 'action' => 'create-invoice', 'module' => 'admin', 'orderId' => $data['id']), null, true);
+                         $btn        =   "btn-info";
+                      }
+                      else{
+                        $InvoiceUrl =  "javascript:void(0);";
+                        $btn        =   "btn-success";
+                      }
+                      ?>
+                      <a href="<?php echo $InvoiceUrl; ?> " class="btn btn-sm <?=$btn?>">
+                         <span >Invoice</span>
+                      </a>
+           </td>
                                            <!--
 
                                            <td class="center">

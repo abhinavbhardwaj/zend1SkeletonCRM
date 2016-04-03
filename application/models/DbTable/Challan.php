@@ -1,6 +1,6 @@
 <?php
 /*
- * This is a model class for Purchase Order
+ * This is a model class for Challan
  * Created By Abhinav Bhardwaj
  *
  */
@@ -22,15 +22,15 @@ class Application_Model_DbTable_Challan extends Zend_Db_Table_Abstract
 	}
 
 	/**
-	 *Function to Purchase Order by order Id
+	 *Function to get Challan by challan Id
 	 */
 	public function getChallanById($challanId){
 		$db 				= 		Zend_Db_Table::getDefaultAdapter();
 		$select 			= 		$db->select()
-									->from(array('ch' => $this->_name), "ch.*")									
+									->from(array('ch' => $this->_name), "ch.*")
 									->joinLeft(array('op' => 'bal_ordered_product'),
 										'ch.order_product_id = op.id',
-										array( 
+										array(
 											  "given_quentity"=>"op.given_quentity"
 											  )
 										)
@@ -53,10 +53,47 @@ class Application_Model_DbTable_Challan extends Zend_Db_Table_Abstract
 											  "client_zip"=>"cli.zip"
 											  )
 										)
-									->where("ch.id =  $challanId"); 
+									->where("ch.id =  $challanId");
 		$poInfo 			=  		$db->fetchAll($select);
-	 
+
       return $poInfo;
+	}
+
+
+	/**
+	 *Function to get All Challan by purchase order Id
+	 */
+	public function getAllChallanByPOId($POId){
+		$db 				= 		Zend_Db_Table::getDefaultAdapter();
+		$select 			= 		$db->select()
+									->from(array('ch' => $this->_name),
+										   array("challan_id"=>"ch.id",
+												 "payment_date"=>"ch.payment_date",
+												 "quantity"=>"ch.quantity",
+												 "sub_total"=>"ch.sub_total",
+												 "vat"=>"ch.vat",
+												 "shipping"=>"ch.shipping",
+												 "discount"=>"ch.discount",
+												 "total"=>"ch.total",
+												 ))
+									->joinLeft(array('op' => 'bal_ordered_product'),
+										'ch.order_product_id = op.id',
+										array(
+											  "given_quentity"=>"op.given_quentity"
+											  )
+										)
+									->joinLeft(array('pro' => 'bal_products'),
+										'pro.id = ch.product_id',
+										array("product_name"=>"pro.name",
+											  "unit"=>"pro.unit",
+											  "rate"=>"pro.price"
+											  )
+										)
+
+									->where("ch.order_no =  $POId");
+		$chInfo 			=  		$db->fetchAll($select);
+
+      return $chInfo;
 	}
 
 	/**
@@ -68,11 +105,22 @@ class Application_Model_DbTable_Challan extends Zend_Db_Table_Abstract
 		$select 			= 		$db->select()->from($this->_name, array(new Zend_Db_Expr("MAX(id) AS maxID")));
 
 		$maxId				=		((int)$db->fetchOne($select)+1);
-		 
+
 		return $maxId;
 	}
 
+	/**
+	 *Function to all challan details
+	 *Here we are just taking higest chalan id from challan table
+	 */
+	public function getAllChallnByorderId(){
+		$db 				= 		Zend_Db_Table::getDefaultAdapter();
+		$select 			= 		$db->select()->from($this->_name, array(new Zend_Db_Expr("MAX(id) AS maxID")));
 
+		$maxId				=		((int)$db->fetchOne($select)+1);
+
+		return $maxId;
+	}
 
 
 }

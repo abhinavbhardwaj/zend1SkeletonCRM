@@ -17,14 +17,10 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path(),
 )));
 
-function prd($str, $notDie=FALSE){
-    echo "<pre>";
-    print_r($str);
-    echo "</pre>";
-    if($notDie===FALSE) die;
-}
 /** Zend_Application */
 require_once 'Zend/Application.php';
+/** common zend functions  */
+require_once APPLICATION_PATH . '/../public/global/functions.php';
 
 // Create application, bootstrap, and run
 $application = new Zend_Application(

@@ -1,41 +1,225 @@
-2016-04-02T06:09:04-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'po.client_id' in 'on clause'' in /var/www/html/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+2016-04-03T10:36:57-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'gr_no' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
 Stack trace:
-#0 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
-#1 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
-#2 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
-#3 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
-#4 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
-#5 /var/www/html/zend1SkeletonCRM/application/models/DbTable/Challan.php(56): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
-#6 /var/www/html/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(195): Application_Model_DbTable_Challan->getChallanById('1007')
-#7 /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->printChallanAction()
-#8 /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('printChallanAct...')
-#9 /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
-#10 /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
-#11 /var/www/html/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
-#12 /var/www/html/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `ba...', Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(575): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `ba...', Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(1075): Zend_Db_Adapter_Abstract->insert('bal_challan', Array)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(144): Zend_Db_Table_Abstract->insert(Array)
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createInvoiceAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createInvoiceAc...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(30): Zend_Application->run()
 #13 {main}
 
-Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'po.client_id' in 'on clause'' in /var/www/html/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'gr_no' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
 Stack trace:
-#0 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
-#1 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
-#2 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
-#3 /var/www/html/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
-#4 /var/www/html/zend1SkeletonCRM/application/models/DbTable/Challan.php(56): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
-#5 /var/www/html/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(195): Application_Model_DbTable_Challan->getChallanById('1007')
-#6 /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->printChallanAction()
-#7 /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('printChallanAct...')
-#8 /var/www/html/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
-#9 /var/www/html/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
-#10 /var/www/html/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
-#11 /var/www/html/zend1SkeletonCRM/public/index.php(34): Zend_Application->run()
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `ba...', Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(575): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `ba...', Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(1075): Zend_Db_Adapter_Abstract->insert('bal_challan', Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(144): Zend_Db_Table_Abstract->insert(Array)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createInvoiceAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createInvoiceAc...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(30): Zend_Application->run()
 #12 {main}
 Array
 (
     [module] => admin
     [controller] => receipt
-    [action] => print-challan
-    [challanId] => 1007
+    [action] => create-invoice
+    [orderId] => 10001
+    [payment_date] => 04/04/2016 12:00 AM
+    [client_id] => 1
+    [order_no] => 10001
+    [gr_no] => 522555
+    [po_date] => 04/04/2016 09:00 AM
+    [gr_date] => 04/22/2016 12:00 AM
+    [challan_ids] => Array
+        (
+            [0] => 1006
+            [1] => 1007
+            [2] => 1008
+        )
+
+    [added_by] => 1
+)
+
+-----------------------------------------------------------
+
+2016-04-03T10:56:56-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bill_date' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `ba...', Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(575): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `ba...', Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(1075): Zend_Db_Adapter_Abstract->insert('bal_invoice', Array)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Invoice.php(19): Zend_Db_Table_Abstract->insert(Array)
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(144): Application_Model_DbTable_Invoice->addInvoice(Array)
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createInvoiceAction()
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createInvoiceAc...')
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(30): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bill_date' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `ba...', Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(575): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `ba...', Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(1075): Zend_Db_Adapter_Abstract->insert('bal_invoice', Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Invoice.php(19): Zend_Db_Table_Abstract->insert(Array)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(144): Application_Model_DbTable_Invoice->addInvoice(Array)
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createInvoiceAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createInvoiceAc...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(30): Zend_Application->run()
+#13 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => create-invoice
+    [orderId] => 10001
+    [payment_date] => 04/13/2016 12:00 AM
+    [client_id] => 1
+    [order_no] => 10001
+    [gr_no] => 522555
+    [po_date] => 04/04/2016 09:00 AM
+    [gr_date] => 04/06/2016 12:00 AM
+    [challan_ids] => Array
+        (
+            [0] => 1006
+            [1] => 1007
+            [2] => 1008
+        )
+
+    [sub_total] => 5000.00
+    [vat] => 240.00
+    [shipping] => 0.00
+    [discount] => 225.00
+    [total] => 5015.00
+    [totalInWords] => five thousand fifteen
+    [added_by] => 1
+)
+
+-----------------------------------------------------------
+
+2016-04-03T11:00:23-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bill_date' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `ba...', Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(575): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `ba...', Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(1075): Zend_Db_Adapter_Abstract->insert('bal_invoice', Array)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Invoice.php(18): Zend_Db_Table_Abstract->insert(Array)
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(146): Application_Model_DbTable_Invoice->addInvoice(Array)
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createInvoiceAction()
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createInvoiceAc...')
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#13 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(30): Zend_Application->run()
+#14 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'bill_date' in 'field list'' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `ba...', Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(575): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `ba...', Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Table/Abstract.php(1075): Zend_Db_Adapter_Abstract->insert('bal_invoice', Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Invoice.php(18): Zend_Db_Table_Abstract->insert(Array)
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(146): Application_Model_DbTable_Invoice->addInvoice(Array)
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->createInvoiceAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('createInvoiceAc...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(30): Zend_Application->run()
+#13 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => create-invoice
+    [orderId] => 10001
+    [payment_date] => 04/04/2016 12:00 AM
+    [client_id] => 1
+    [order_no] => 10001
+    [gr_no] => 522555
+    [po_date] => 04/04/2016 09:00 AM
+    [gr_date] => 04/04/2016 12:00 AM
+    [challan_ids] => Array
+        (
+            [0] => 1006
+            [1] => 1007
+            [2] => 1008
+        )
+
+    [sub_total] => 5000.00
+    [vat] => 240.00
+    [shipping] => 0.00
+    [discount] => 225.00
+    [total] => 5015.00
+    [totalInWords] => five thousand fifteen
+    [added_by] => 1
+)
+
+-----------------------------------------------------------
+
+2016-04-03T11:23:42-07:00 INFO (6): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Invoice.php(56): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(267): Application_Model_DbTable_Invoice->getInvoiceById('1000001')
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->printInvoiceAction()
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('printInvoiceAct...')
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#12 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(30): Zend_Application->run()
+#13 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4' in /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /opt/lampp/htdocs/zend1SkeletonCRM/application/models/DbTable/Invoice.php(56): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /opt/lampp/htdocs/zend1SkeletonCRM/application/modules/admin/controllers/ReceiptController.php(267): Application_Model_DbTable_Invoice->getInvoiceById('1000001')
+#6 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Action.php(516): Admin_ReceiptController->printInvoiceAction()
+#7 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('printInvoiceAct...')
+#8 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#10 /opt/lampp/htdocs/zend1SkeletonCRM/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#11 /opt/lampp/htdocs/zend1SkeletonCRM/public/index.php(30): Zend_Application->run()
+#12 {main}
+Array
+(
+    [module] => admin
+    [controller] => receipt
+    [action] => print-invoice
+    [invoiceId] => 1000001
 )
 
 -----------------------------------------------------------
