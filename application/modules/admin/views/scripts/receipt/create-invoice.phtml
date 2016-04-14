@@ -58,7 +58,9 @@ $adminInfoSession 		= 		new Zend_Session_Namespace('adminInfo');
 
 								  <div class="form-group">
                                             <label>Vat Invoice No.</label>
-                                            <strong><input class="form-control" readonly="readonly" value="<?php echo $this->invoiceNo?>"></strong>
+                                            <strong>
+												<input class="form-control" name="invoice_no" value="<?php echo $this->invoiceNo?>">
+											</strong>
                                         </div>
 							</div>
 							<div class="col-sm-6 text-right">
@@ -296,14 +298,12 @@ $adminInfoSession 		= 		new Zend_Session_Namespace('adminInfo');
 								<p class="AmountInWords">
 									<strong>Amount In words:</strong>
 									<?php
-									$f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
-										$inWords =  $f->format($total);
-										echo $inWords;
+									echo amountInWords($total);
 										?>
 
 
 								</p>
-								<input type="hidden" name="totalInWords" readonly="readonly" value="<?=$inWords?>">
+								<input type="hidden" name="totalInWords" readonly="readonly" value="<?php echo amountInWords($total);?>">
 							</div>
 						</div>
 

@@ -43,7 +43,7 @@ function closeThisError(id){
  *function to prin specific div
  */
 function printThisPage() {
- 
+
                         var divContents = $("#print-div").html();
                         var printWindow = window.open('', '', 'height=1000,width=900');
                         printWindow.document.write('<html><head>');
@@ -110,6 +110,18 @@ $(function() {
 
         });
 
+        $(document.body).on('change',".unit_price",function (e) {
+       // $(".client-details").hide();
+        var rate                =       $(this).val();
+        var quentity            =       $(".ordered_quentity").val();
+
+        if(( quentity != "")&&( rate != "")){ //no errors
+          var total = (quentity)*(rate);
+           $(".TotalAmount").val(total.toFixed(2));
+                }
+
+        });
+
 //Jquery function for challan page
         $(document.body).on('change',".quantity",function (e) {
         $(".AmountInWords").hide();// by default this dive will be hidden
@@ -132,7 +144,41 @@ $(function() {
            $(".vat").val(vatTotal.toFixed(2));//Show vat
            $(".shipping").val(shippingTotal);//Show shipping
            $(".discount").val(discountTotal.toFixed(2));//Show Discount
-           $(".total").val(Total);//Show Discount
+           $(".total").val(Total.toFixed(2));//Show Discount
+           if (Total > 0) {
+            $(".AmountInWords").show();
+            $(".AmountInWords").html("<strong>Amount In words:</strong>  " + TotalInWords + "only");//Show Amount in words
+            $(".totalInWords").val(TotalInWords);//Show Amount in words
+           }
+
+
+         }
+
+        });
+
+//Jquery function for challan page
+        $(document.body).on('change',".productRate",function (e) {
+        $(".AmountInWords").hide();// by default this dive will be hidden
+        var quentity            =       $(".quantity").val();
+        var rate                =       $(this).val();
+        var vat                 =       $(".vat").attr("vat");
+        var shipping            =       $(".shipping").attr("shipping");
+        var discount            =       $(".discount").attr("discount");
+
+        if(( quentity != "")&&( rate != "")){
+          var subTotal          =       parseFloat((quentity)*(rate));//calculate subtotle
+          var vatTotal          =       parseFloat((subTotal)*(vat)/100);//calculate Vat
+          var shippingTotal     =       parseFloat(shipping);//calculate Vat
+          var discountTotal     =       parseFloat((subTotal)*(discount)/100);//calculate discount
+          var  Total            =       parseFloat(((subTotal+shippingTotal+vatTotal)) - (discountTotal) );//calculate The total amount
+
+          var TotalInWords      =       toWords(Total);
+
+           $(".sub_total").val(subTotal.toFixed(2)); //show subtotal
+           $(".vat").val(vatTotal.toFixed(2));//Show vat
+           $(".shipping").val(shippingTotal);//Show shipping
+           $(".discount").val(discountTotal.toFixed(2));//Show Discount
+           $(".total").val(Total.toFixed(2));//Show Discount
            if (Total > 0) {
             $(".AmountInWords").show();
             $(".AmountInWords").html("<strong>Amount In words:</strong>  " + TotalInWords + "only");//Show Amount in words

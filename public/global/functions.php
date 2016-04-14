@@ -37,3 +37,15 @@ function getStatusButton($status){
         endswitch;
         return $button;
 }
+
+/**
+ *Function to convert amoiunt into words
+ *@param: float Amount
+ *@return Str amount in words
+ *@author: Abhinav
+ */
+function amountInWords($amount){
+    $f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+	$inWords =  $f->format($amount);
+    return  ucfirst($inWords);
+}

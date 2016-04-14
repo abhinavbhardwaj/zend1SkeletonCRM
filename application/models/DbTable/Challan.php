@@ -31,14 +31,17 @@ class Application_Model_DbTable_Challan extends Zend_Db_Table_Abstract
 									->joinLeft(array('op' => 'bal_ordered_product'),
 										'ch.order_product_id = op.id',
 										array(
-											  "given_quentity"=>"op.given_quentity"
+											  "given_quentity"=>"op.given_quentity",
+											  "ordered_quentity"=>"op.ordered_quentity",
+											  "rate"=>"op.rate"
+
 											  )
 										)
 									->joinLeft(array('pro' => 'bal_products'),
 										'pro.id = ch.product_id',
 										array("product_name"=>"pro.name",
-											  "unit"=>"pro.unit",
-											  "rate"=>"pro.price"
+											  "unit"=>"pro.unit"
+
 											  )
 										)
 									->joinLeft(array('cli' => 'bal_clients'),
@@ -79,14 +82,15 @@ class Application_Model_DbTable_Challan extends Zend_Db_Table_Abstract
 									->joinLeft(array('op' => 'bal_ordered_product'),
 										'ch.order_product_id = op.id',
 										array(
-											  "given_quentity"=>"op.given_quentity"
+											  "given_quentity"=>"op.given_quentity",
+											  "ordered_quentity"=>"op.ordered_quentity",
+											  "rate"=>"op.rate"
 											  )
 										)
 									->joinLeft(array('pro' => 'bal_products'),
 										'pro.id = ch.product_id',
 										array("product_name"=>"pro.name",
-											  "unit"=>"pro.unit",
-											  "rate"=>"pro.price"
+											  "unit"=>"pro.unit"
 											  )
 										)
 

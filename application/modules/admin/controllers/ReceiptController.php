@@ -58,7 +58,8 @@ class Admin_ReceiptController extends Zend_Controller_Action {
             $ChData['po_date']          =       date("Y-m-d H:i:s", strtotime($ChData['po_date']));
             $ChData['bill_date']        =       date("Y-m-d H:i:s", strtotime($ChData['bill_date']));
             $ChData['created_date']     =       date("Y-m-d H:i:s");
-
+            $Opdata['rate']             =       $ChData['rate'];
+            unset($ChData['rate']);
             //first we need to create chalan
              $addChallan                =       $tblchallan->insert($ChData);
 
@@ -71,6 +72,7 @@ class Admin_ReceiptController extends Zend_Controller_Action {
 
 
             $Opdata['given_quentity']   =       (int)($ChData['quantity']+$purchaseOrder[0]['given_quentity']); //Order product data setup
+
 
             //Set Purchase order
             $remaningQuentity           =       ((int) $purchaseOrder[0]['ordered_quentity'] - $Opdata['given_quentity']);
