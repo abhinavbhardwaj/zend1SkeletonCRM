@@ -1,0 +1,89 @@
+ <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"><?php echo $this->header?></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+          <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <?php if (isset($this->success) && $this->success != '') { ?>
+                                    <div id="success" class="alert alert-success">
+                                        <button class="close" data-dismiss="alert">×</button>
+                                    <?php echo $this->success; ?>
+                                    </div>
+                                <?php } ?>
+                                <?php
+                                if (isset($this->error) && $this->error != '') {
+                                    ?>
+                                    <div id="exception" class="alert alert-error">
+                                        <button class="close" data-dismiss="alert">×</button>
+                                    <?php echo $this->error; ?>
+                                    </div>
+                                    <?php
+                                }
+                            ?>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables">
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice No.</th>
+                                            <th>Client</th>
+                                            <th>Challans</th>
+                                            <th>Packing</th>
+                                            <th>Rate</th>
+                                            <th>Price(&#8377)</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $i          =   0;
+                                    foreach($this->invoice as $invoice):
+                                    $i++;
+                                    $class      =   (($i%2)==0) ? "even gradeA" : "odd gradeA";
+                                    $printUrl   =      $this->url(array('controller' => 'receipt', 'action' => 'print-invoice', 'module' => 'admin', 'invoiceId' => $invoice['invoice_id']), null, true);
+                                    ?>
+                                        <tr class="<?php echo $class ?>">
+                                            <td><?php echo (!empty($invoice['invoice_no'])) ? $invoice['invoice_no'] :  $invoice['invoice_id'] ?></td> 
+                                            <td><?php echo $invoice['client_name'] ?></td>
+                                            <td><?php echo $invoice['challan_ids'] ?></td>
+                                            <td><?php echo $invoice['given_quentity'] ?></td>
+                                            <td class="center"><?php echo $invoice['rate'] ?></td>
+                                            <td class="center"><?php echo $invoice['total'] ?></td>
+                                            <td class="center"><?php echo date("d-M-Y", strtotime($invoice['payment_date'])) ?></td>
+                                           <td class="center">
+                                            <a href="<?=$printUrl?>" class="btn btn-sm btn-primary">
+                                                <span> Print</span>
+                                            </a>
+
+                                            </td>
+
+
+
+                                        </tr>
+                                    <?php endforeach;
+                                    if($i==0)
+                                    echo "<tr><td>No data Available</td></tr>";
+                                    ?>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->

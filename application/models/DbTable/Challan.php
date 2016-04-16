@@ -71,6 +71,7 @@ class Application_Model_DbTable_Challan extends Zend_Db_Table_Abstract
 		$select 			= 		$db->select()
 									->from(array('ch' => $this->_name),
 										   array("challan_id"=>"ch.id",
+												 "challan_no"=>"ch.challan_no",
 												 "payment_date"=>"ch.payment_date",
 												 "quantity"=>"ch.quantity",
 												 "sub_total"=>"ch.sub_total",
@@ -91,6 +92,13 @@ class Application_Model_DbTable_Challan extends Zend_Db_Table_Abstract
 										'pro.id = ch.product_id',
 										array("product_name"=>"pro.name",
 											  "unit"=>"pro.unit"
+											  )
+										)
+									->joinLeft(array('cli' => 'bal_clients'),
+										'cli.id = ch.client_id',
+										array(
+											  "client_company_name"=>"cli.company_name",
+											  "client_name"=>"cli.name"
 											  )
 										)
 

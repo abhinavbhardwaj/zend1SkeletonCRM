@@ -25,7 +25,7 @@
 
 						<!-- Client menu -->
 						<li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Client<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Client<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                  <li>
                                     <a href="<?php echo $this->url(array('controller' => 'client', 'action' => 'add', 'module' => 'admin'), null, true); ?>">
@@ -43,24 +43,21 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Receipt<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 								<li>
-                                    <a href="<?php echo $this->url(array('controller' => 'receipt', 'action' => 'purchase-order', 'module' => 'admin'), null, true); ?>"><i class="fa fa-table fa-fw"></i>Create Purchase Order</a>
+                                    <a href="<?php echo $this->url(array('controller' => 'receipt', 'action' => 'purchase-order', 'module' => 'admin'), null, true); ?>"><i class="fa fa-edit fa-fw"></i>Create Purchase Order</a>
                                 </li>
 								<li>
                                     <a href="<?php echo $this->url(array('controller' => 'receipt', 'action' => 'all-purchase-order', 'module' => 'admin'), null, true); ?>"><i class="fa fa-table fa-fw"></i>Purchase Order</a>
                                 </li>
-								<!--<li>
-                                    <a href="vat_invoice.html"><i class="fa fa-table fa-fw"></i>Vat Invoice</a>
-                                </li>
-                                <li>
-                                    <a href="vat_challan.html"><i class="fa fa-edit fa-fw"></i>Vat Challan</a>
-                                </li>-->
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
 
-                       <!-- <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Orders</a>
-                        </li>-->
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'order', 'action' => 'index', 'module' => 'admin'), null, true); ?>">
+								<i class="fa fa-sitemap fa-fw"></i> Orders
+							</a>
+                        </li>
                        <!-- <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Reports</a>
                         </li>-->

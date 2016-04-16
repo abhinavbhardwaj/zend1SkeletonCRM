@@ -106,19 +106,6 @@ class Application_Model_DbTable_PurchaseOrder extends Zend_Db_Table_Abstract
 		return $updateCatData;
 	}
 
-	public function check_title($title){
-
-		$db = Zend_Db_Table_Abstract::getDefaultAdapter();
-		$where = $this->_db->quoteInto("title=?",$title);
-		$select = $db->select()
-		->from($this->_name, array('count(*) as tot'))
-		->where($where);
-		$categoryData = $db->fetchRow($select);
-
-		return $categoryData['tot'];
-
-	}
-
 
 
 }
