@@ -69,7 +69,8 @@
                         $btn        =   "btn-info";
                       }
                       else{
-                        $ChallanUrl =  "javascript:void(0);";
+                       // $ChallanUrl =  "javascript:void(0);";
+                      $ChallanUrl =  $this->url(array('controller' => 'receipt', 'action' => 'create-challan', 'module' => 'admin', 'orderId' => $data['id']), null, true);
                         $btn        =   "btn-success";
                       }
                       ?>
@@ -83,7 +84,8 @@
                          $btn        =   "btn-info";
                       }
                       else{
-                        $InvoiceUrl =  "javascript:void(0);";
+                      $InvoiceUrl =  $this->url(array('controller' => 'receipt', 'action' => 'create-invoice', 'module' => 'admin', 'orderId' => $data['id']), null, true);
+                        //$InvoiceUrl =  "javascript:void(0);";
                         $btn        =   "btn-success";
                       }
                       ?>

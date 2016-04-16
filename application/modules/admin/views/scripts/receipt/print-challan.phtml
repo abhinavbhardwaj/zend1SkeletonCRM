@@ -206,7 +206,7 @@
 								Subtotal <span> <input type="number"  value="<?php echo $challan['sub_total']?>" readonly="readonly" name="sub_total"></span>
 							</div>
 							<div class="field">
-								VAT <?php echo  ($this->vat > 0) ? "(".$this->vat."%)" : ""?>
+								VAT <?php echo  ($challan['vat_value'] > 0) ? "(".$challan['vat_value']."%)" : ""?>
 								<span>
 									<input type="number" readonly="readonly" value="<?php echo $challan['vat']?>"   name="vat">
 								</span>
@@ -218,7 +218,7 @@
 								</span>
 							</div>
 							<div class="field">
-								Discount <?php echo  ($this->discount > 0) ? "(".$this->discount."%)" : ""?>
+								Discount <?php echo  ($challan['discount_value'] > 0) ? "(".$challan['discount_value']."%)" : ""?>
 								<span>
 									<input type="number"  value="<?php echo $challan['discount']?>" readonly="readonly"  >
 								</span>

@@ -227,7 +227,8 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 								Subtotal <span> <input type="text" class="sub_total" required="required"  name="sub_total"></span>
 							</div>
 							<div class="field">
-								VAT <?php echo  ($this->vat > 0) ? "(".$this->vat."%)" : ""?>
+								VAT
+								(<input type="text" value="<?php echo $this->vat?>" style="width: 4%;" class="vat_value" name="vat_value">%)
 								<span>
 									<input type="text" class="vat" value="0" vat="<?php echo $this->vat?>" name="vat">
 								</span>
@@ -239,7 +240,8 @@ $remaning_quentity		=		($remaning_quentity > 0 ) ? $remaning_quentity : 0 ;
 								</span>
 							</div>
 							<div class="field">
-								Discount <?php echo  ($this->discount > 0) ? "(".$this->discount."%)" : ""?>
+								Discount
+								(<input type="text" value="<?php echo $this->discount?>" class="discount_value" style="width: 4%;" name="discount_value">%)
 								<span>
 									<input type="text" value="0" class="discount"  discount="<?php echo $this->discount?>" name="discount">
 								</span>

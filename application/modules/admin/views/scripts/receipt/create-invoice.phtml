@@ -266,28 +266,29 @@ $adminInfoSession 		= 		new Zend_Session_Namespace('adminInfo');
 							</p>
 
 							<div class="field">
-								Subtotal <span> <input type="text" name="sub_total" readonly="readonly" value="<?=$totalSubtotal?>"></span>
+								Subtotal <span> <input type="text" name="sub_total" value="<?=$totalSubtotal?>"></span>
 							</div>
 							<div class="field">
-								VAT <?php echo  ($this->vat > 0) ? "(".$this->vat."%)" : ""?>
+								VAT (<input type="text" value="<?php echo $this->vat?>" style="width: 4%;" class="vat_value" name="vat_value">%)
+
 								<span>
-									<input type="text" name="vat" readonly="readonly" value="<?=$totalVat?>"  >
+									<input type="text" name="vat"  value="<?=$totalVat?>"  >
 								</span>
 							</div>
 							<div class="field">
 								Shipping
 								<span>
-									<input type="text" name="shipping" value="<?=$totalShipping?>" readonly="readonly" >
+									<input type="text" name="shipping" value="<?=$totalShipping?>" >
 								</span>
 							</div>
 							<div class="field">
-								Discount <?php echo  ($this->discount > 0) ? "(".$this->discount."%)" : ""?>
+								Discount (<input type="text" value="<?php echo $this->discount?>" style="width: 4%;" class="discount_value" name="discount_value">%)
 								<span>
-									<input type="text" name="discount" value="<?=$totalDiscount?>"  readonly="readonly"  >
+									<input type="text" name="discount" value="<?=$totalDiscount?>" >
 								</span>
 							</div>
 							<div class="field ">
-								Total <span> <input type="text" name="total" readonly="readonly" value="<?=$total?>"></span>
+								Total <span> <input type="text" name="total" value="<?=$total?>"></span>
 							</div>
 
 

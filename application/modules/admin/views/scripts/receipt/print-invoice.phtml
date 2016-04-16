@@ -254,7 +254,7 @@ $adminInfoSession 		= 		new Zend_Session_Namespace('adminInfo');
 								Subtotal <span> <input type="text" name="sub_total" readonly="readonly" value="<?=$totalSubtotal?>"></span>
 							</div>
 							<div class="field">
-								VAT <?php echo  ($this->vat > 0) ? "(".$this->vat."%)" : ""?>
+								VAT <?php echo  ($this->invoice['vat_value'] > 0) ? "(".$this->invoice['vat_value']."%)" : ""?>
 								<span>
 									<input type="text" name="vat" readonly="readonly" value="<?=$totalVat?>"  >
 								</span>
@@ -266,7 +266,7 @@ $adminInfoSession 		= 		new Zend_Session_Namespace('adminInfo');
 								</span>
 							</div>
 							<div class="field">
-								Discount <?php echo  ($this->discount > 0) ? "(".$this->discount."%)" : ""?>
+								Discount <?php echo  ($this->invoice['discount_value'] > 0) ? "(".$this->invoice['discount_value']."%)" : ""?>
 								<span>
 									<input type="text" name="discount" value="<?=$totalDiscount?>"  readonly="readonly"  >
 								</span>
